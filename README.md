@@ -1,27 +1,19 @@
-# PACDI Gluco-Navigator (Project Healer)
-**Version:** 0.1.0-alpha
-**Date:** 2026-03-13
-**Author:** PACDI Global / Usta Feraseti & Gemini AI
-
-## 🛡️ Vizyon Bildirisi
-“Unutmayın; İnsanlık Onurunu korumak toplumları birlik içinde ayakta tutmak için olmazsa olmaz bir gerekliliktir." 
-Bu ilke doğrultusunda, 21. yüzyılın kronik hastalığı olan Diyabet'i; sensör verisi, akıllı saat metrikleri ve ruhsal durum (stres) analizi ile kontrol altına alan dünyanın ilk "Usta-Çırak" odaklı sağlık pusulasıdır.
-
-"Kapsayıcı Sağlık Vizyonu (Inclusive Health): Sistemimiz, yüksek maliyetli sürekli glukoz sensörlerine erişimi olmayan, her gün parmak delme yöntemiyle ölçüm yapmak zorunda kalan bireyleri dışlamaz; aksine onları 'Veri Gönüllüsü' olarak merkeze alır. Bu bireylerin manuel veri girişlerini, akıllı saat (smartwatch) biyo-metrikleri ve ruhsal stres analizleriyle harmanlayarak, parmak delme sıklığını azaltacak ve yaşam kalitesini artıracak tahminleme modelleri geliştirir."
-
-## ⚙️ Temel Modüller
-1. **Predictive Analytics:** Sensör verisi olmayanlar için "Elite 3000" grubundan gelen temiz veriyle şeker tahmini.
-2. **Stress-Spike Correlation:** Ruhsal durumun (İş, trafik, duygu) glukoz üzerindeki etkisini ölçen algoritmalar.
-3. **Data Integrity Guard:** Yanıltıcı veri girişini tespit eden ve sistem güvenliğini koruyan blokaj mekanizması.
-
-📝 Project Description (Resmi Tanım)
-Project Name: pacdi-gluco-navigator
-Slogan: Beyond Sensing, Into Living. (Ölçümün Ötesinde, Hayatın İçinde.)
-[TR] Açıklama: "Diyabet yönetiminde çığır açan bu sistem; invaziv (Libre vb.) ve non-invaziv (Smartwatch) verileri, kullanıcının ruhsal stres faktörleri (iş, trafik, duygu durum) ile korele eden yapay zeka tabanlı bir analitik platformdur. 'Elite 3000' onaylı veri havuzunu kullanarak, sensör imkanı olmayan bireyler için yüksek doğruluklu şeker tahminleme ve yaşam tarzı rehberliği sunar. İnsanlık onurunu ve veri dürüstlüğünü merkeze alan bir liyakat ekosistemidir."
-[EN] Description: "An AI-powered analytical platform that correlates invasive and non-invasive glucose data with psychological stress factors (work, traffic, emotional state). Utilizing the 'Elite 3000' validated dataset, it provides high-accuracy glucose forecasting and lifestyle guidance for individuals without access to continuous sensors. A merit-based ecosystem centered on human dignity and data integrity."
-🛡️ Plaza Diliyle "Core Features" (Öne Çıkan Özellikler)
-• Stress-Glucose Correlation: Duygusal stresin glukoz dalgalanmaları üzerindeki etkisini deşifre eder.
-• Data Integrity Protocol: Yanıltıcı veri girişini engelleyen otomasyonel denetim mekanizması.
-• Inclusive Health: Sensör erişimi kısıtlı olan kitleler için "Yazılımsal Sensör" (Software-as-a-Sensor) çözümü.
-## ⚖️ Hukuki Uyarı & Tescil
-Bu depo içerisinde yer alan tüm algoritmik mantık ve "Stres-Glukoz Korelasyonu" fikri PACDI Global'e aittir. 16 Mart 2026 itibariyle tescil süreci başlatılmıştır.
+🧭 GLUCONAVIGATOR
+"Beyond Sensing, Into Living"
+GlucoNavigator, karmaşık glükoz verilerini ve biyometrik sinyalleri, bireylerin günlük yaşamlarını daha özgür ve bilinçli sürdürmelerini sağlayan bir Yaşam Navigasyonu'na dönüştüren devrimsel bir Wellness ekosistemidir.
+🏛️ Vizyon ve Felsefe
+"İnsanlık onurunu korumak toplumları b!rl!k !ç!nde ayakta tutmak !ç!n olmazsa olmaz b!r
+gerekl!l!kt!r."
+Bizim hedefimiz, bireyleri sadece veri takip eden pasif kullanıcılar olmaktan çıkarıp; kendi vücut ritimlerini anlayan, geleneksel sensör teknolojilerine (CGM) olan bağımlılığını yönetebilen ve uzun vadede insülinden bağımsızlaşma yolunda rehberlik alan bilinçli özneler haline getirmektir.
+🚀 Öne Çıkan Özellikler
+• Software-as-a-Sensor (SaaS): Mevcut giyilebilir teknoloji sensörlerini (nabız, stres, uyku) yapay zeka ile harmanlayarak glükoz tahminleme modelleri sunar.
+• Elite 3000 Gönüllü Programı: 3.000 onursal kurucu ile desteklenen, gerçek hayat verisiyle beslenen etik algoritma.
+• Stres-Glükoz Korelasyonu: Duygusal ve çevresel stresin glükoz üzerindeki etkisini anlık olarak analiz eden proaktif navigasyon.
+• Anonimlik Kalkanı: Kullanıcı verilerini kişisel kimlikten arındıran, "Veri Sahibi Kullanıcıdır" ilkesine dayalı gizlilik mimarisi.
+🛡️ Hukuki ve Teknik Durum
+• Marka Tescili: GLUCONAVIGATOR (Tescil süreci: 16 Mart 2026 / TÜRKPATENT).
+• Fikri Mülkiyet: Algoritma ve "Software-as-a-Sensor" mimarisi Ticari Sır (Trade Secret) olarak korunmaktadır.
+• Zaman Mührü: Yazılım mimarisi 13 Mart 2026 itibarıyla mühürlenmiştir.
+🤝 PACDI Global Ekosistemi
+GlucoNavigator; PusulaPro, KompassPro ve SilverCompass ile aynı "Derman Odaklı" DNA'yı paylaşır. Kariyer navigasyonundan sağlık navigasyonuna kadar bireyin onurunu merkeze alan bütünsel bir yapının parçasıdır.
+PACDI Global - 2026. Tüm hakları saklıdır.
