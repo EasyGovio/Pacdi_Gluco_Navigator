@@ -4,7 +4,7 @@ GlucoNavigator, karmaşık glükoz verilerini ve biyometrik sinyalleri, bireyler
 🏛️ Vizyon ve Felsefe
 "İnsanlık onurunu korumak toplumları b!rl!k !ç!nde ayakta tutmak !ç!n olmazsa olmaz b!r
 gerekl!l!kt!r."
-Bizim hedefimiz, bireyleri sadece veri takip eden pasif kullanıcılar olmaktan çıkarıp; kendi vücut ritimlerini anlayan, geleneksel sensör teknolojilerine (CGM) olan bağımlılığını yönetebilen ve uzun vadede insülinden bağımsızlaşma yolunda rehberlik alan bilinçli özneler haline getirmektir.
+Bizim hedefimiz, bireyleri; kendi vücut ritimlerini anlayan, geleneksel sensör teknolojilerine (CGM) olan bağımlılığını yönetebilen ve insülin yönetimini daha bilinçli ve öngörülü hale getirme yolunda rehberlik alan bilinçli özneler haline getirmektir."
 🚀 Öne Çıkan Özellikler
 • Software-as-a-Sensor (SaaS): Mevcut giyilebilir teknoloji sensörlerini (nabız, stres, uyku) yapay zeka ile harmanlayarak glükoz tahminleme modelleri sunar.
 • Elite 3000 Gönüllü Programı: 3.000 onursal kurucu ile desteklenen, gerçek hayat verisiyle beslenen etik algoritma.
