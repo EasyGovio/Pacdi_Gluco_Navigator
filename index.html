@@ -24,9 +24,7 @@
   }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
 font-family: ‘DM Sans’, sans-serif;
 background: var(–white);
@@ -44,10 +42,7 @@ padding: 0 2rem;
 height: 68px;
 display: flex; align-items: center; justify-content: space-between;
 }
-.logo {
-display: flex; align-items: center; gap: .75rem;
-text-decoration: none;
-}
+.logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
 .logo-icon {
 width: 38px; height: 38px;
 background: linear-gradient(135deg, var(–teal), #1BB5A9);
@@ -98,7 +93,6 @@ radial-gradient(ellipse 700px 500px at 70% 40%, rgba(42,195,183,.12) 0%, transpa
 radial-gradient(ellipse 400px 400px at 20% 80%, rgba(42,195,183,.07) 0%, transparent 60%);
 pointer-events: none;
 }
-/* Floating glucose rings */
 .ring {
 position: absolute;
 border-radius: 50%;
@@ -133,10 +127,7 @@ line-height: 1.1;
 color: var(–white);
 margin-bottom: 1.2rem;
 }
-.hero h1 em {
-font-style: italic;
-color: var(–teal);
-}
+.hero h1 em { font-style: italic; color: var(–teal); }
 .hero-sub {
 font-size: 1.1rem;
 color: rgba(255,255,255,.7);
@@ -144,9 +135,7 @@ line-height: 1.7;
 max-width: 540px;
 margin-bottom: 2.5rem;
 }
-.hero-actions {
-display: flex; gap: 1rem; flex-wrap: wrap;
-}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 .btn-primary {
 background: var(–teal);
 color: var(–navy);
@@ -173,11 +162,7 @@ cursor: pointer;
 transition: border-color .2s, background .2s;
 }
 .btn-outline:hover { border-color: var(–teal); background: rgba(42,195,183,.08); }
-
-.hero-stats {
-display: flex; gap: 2.5rem; margin-top: 3.5rem;
-}
-.stat { }
+.hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; }
 .stat-num {
 font-family: ‘Space Mono’, monospace;
 font-size: 1.8rem;
@@ -192,12 +177,7 @@ letter-spacing: .05em;
 text-transform: uppercase;
 }
 
-@keyframes fade-up {
-from { opacity:0; transform:translateY(20px); }
-to   { opacity:1; transform:translateY(0); }
-}
-
-/* ── SECTION BASE ── */
+/* ── SECTIONS ── */
 section { padding: 100px 2rem; }
 .container { max-width: 1100px; margin: 0 auto; }
 .section-label {
@@ -247,12 +227,8 @@ background: var(–teal-pale);
 display: flex; align-items: center; justify-content: center;
 font-size: 1.3rem; flex-shrink: 0;
 }
-.tech-card h4 {
-font-size: 1rem; font-weight: 600; color: var(–navy);
-margin-bottom: .3rem;
-}
+.tech-card h4 { font-size: 1rem; font-weight: 600; color: var(–navy); margin-bottom: .3rem; }
 .tech-card p { font-size: .88rem; color: var(–muted); line-height: 1.6; }
-
 .tech-visual {
 background: linear-gradient(135deg, var(–navy) 0%, var(–navy-mid) 100%);
 border-radius: 20px;
@@ -267,13 +243,8 @@ content: ‘’;
 position: absolute; inset: 0;
 background: radial-gradient(ellipse at 60% 30%, rgba(42,195,183,.2) 0%, transparent 65%);
 }
-.glucose-chart {
-position: absolute; top: 1.5rem; left: 1.5rem; right: 1.5rem;
-}
-.chart-line {
-width: 100%; height: 80px;
-position: relative;
-}
+.glucose-chart { position: absolute; top: 1.5rem; left: 1.5rem; right: 1.5rem; }
+.chart-line { width: 100%; height: 80px; position: relative; }
 .chart-line svg { width: 100%; height: 100%; }
 .chart-labels {
 display: flex; justify-content: space-between;
@@ -316,14 +287,8 @@ padding: 2rem 1.5rem;
 transition: box-shadow .2s;
 }
 .privacy-card:hover { box-shadow: 0 8px 32px rgba(10,26,58,.07); }
-.privacy-card .icon {
-font-size: 2rem; margin-bottom: 1rem;
-display: block;
-}
-.privacy-card h4 {
-font-size: 1.05rem; font-weight: 600;
-color: var(–navy); margin-bottom: .5rem;
-}
+.privacy-card .icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.privacy-card h4 { font-size: 1.05rem; font-weight: 600; color: var(–navy); margin-bottom: .5rem; }
 .privacy-card p { font-size: .88rem; color: var(–muted); line-height: 1.6; }
 .privacy-card .tag {
 display: inline-block;
@@ -371,9 +336,9 @@ border-radius: 12px;
 padding: 1.25rem 1.5rem;
 display: flex; gap: .8rem; align-items: flex-start;
 }
-.perk-check { color: var(–teal); font-size: 1.1rem; flex-shrink: 0; }
-.perk-text { font-size: .9rem; color: rgba(255,255,255,.85); line-height: 1.5; display: block; }
-.perk-text strong { color: #ffffff; display: block; margin-bottom: .2rem; }
+.perk-check { color: var(–teal); font-size: 1.1rem; flex-shrink: 0; margin-top: .1rem; }
+.perk-text { font-size: .9rem; color: rgba(255,255,255,.9); line-height: 1.5; }
+.perk-text strong { color: #ffffff; display: block; margin-bottom: .3rem; font-size: .95rem; }
 .elite-counter {
 margin-top: 3rem;
 display: flex; align-items: center; gap: 1.5rem;
@@ -387,7 +352,7 @@ overflow: hidden;
 }
 .counter-fill {
 height: 100%;
-width: 18%;
+width: 0%;
 background: linear-gradient(90deg, var(–teal-dk), var(–teal));
 border-radius: 100px;
 transition: width 1.5s ease;
@@ -402,19 +367,16 @@ color: rgba(255,255,255,.5);
 /* ── APPLY FORM ── */
 .apply { background: var(–grey-bg); }
 .apply-wrap {
-max-width: 680px; margin: 0 auto;
+max-width: 680px; margin: 3.5rem auto 0;
 background: var(–white);
 border-radius: 24px;
 padding: 3rem;
 border: 1px solid var(–border);
 box-shadow: 0 16px 64px rgba(10,26,58,.07);
-margin-top: 3.5rem;
 }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-group { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.2rem; }
-.form-group label {
-font-size: .85rem; font-weight: 600; color: var(–navy);
-}
+.form-group label { font-size: .85rem; font-weight: 600; color: var(–navy); }
 .form-group input,
 .form-group select {
 padding: .75rem 1rem;
@@ -430,6 +392,35 @@ background: var(–white);
 .form-group input:focus,
 .form-group select:focus { border-color: var(–teal); }
 .form-group input::placeholder { color: #B0BEC5; }
+.form-group textarea {
+padding: .75rem 1rem;
+border: 1.5px solid var(–border);
+border-radius: 10px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: .95rem;
+color: var(–text);
+outline: none;
+transition: border-color .2s;
+background: var(–white);
+resize: vertical;
+min-height: 90px;
+}
+.form-group textarea:focus { border-color: var(–teal); }
+.form-group textarea::placeholder { color: #B0BEC5; }
+.cgm-info {
+background: var(–teal-pale);
+border: 1px solid rgba(42,195,183,.25);
+border-radius: 10px;
+padding: .85rem 1.1rem;
+font-size: .82rem;
+color: var(–navy);
+line-height: 1.6;
+margin-top: -.4rem;
+margin-bottom: .8rem;
+display: none;
+}
+.cgm-info.visible { display: block; }
+.cgm-info strong { color: var(–teal-dk); }
 .form-submit {
 width: 100%;
 padding: 1rem;
@@ -449,57 +440,6 @@ font-size: .78rem;
 color: var(–muted);
 margin-top: 1rem;
 line-height: 1.6;
-}
-.form-note a { color: var(–teal); text-decoration: none; }
-
-/* CGM info box */
-.cgm-info {
-background: var(–teal-pale);
-border: 1px solid rgba(42,195,183,.25);
-border-radius: 10px;
-padding: .85rem 1.1rem;
-font-size: .82rem;
-color: var(–navy);
-line-height: 1.6;
-margin-top: -.4rem;
-margin-bottom: .8rem;
-display: none;
-}
-.cgm-info.visible { display: block; }
-.cgm-info strong { color: var(–teal-dk); }
-
-/* Textarea */
-.form-group textarea {
-padding: .75rem 1rem;
-border: 1.5px solid var(–border);
-border-radius: 10px;
-font-family: ‘DM Sans’, sans-serif;
-font-size: .95rem;
-color: var(–text);
-outline: none;
-transition: border-color .2s;
-background: var(–white);
-resize: vertical;
-min-height: 90px;
-}
-.form-group textarea:focus { border-color: var(–teal); }
-.form-group textarea::placeholder { color: #B0BEC5; }
-
-/* Radio grubu */
-.radio-group {
-display: flex; flex-direction: column; gap: .5rem;
-margin-top: .2rem;
-}
-.radio-item {
-display: flex; align-items: center; gap: .6rem;
-cursor: pointer;
-font-size: .9rem;
-color: var(–text);
-}
-.radio-item input[type=“radio”] {
-accent-color: var(–teal);
-width: 16px; height: 16px;
-cursor: pointer;
 }
 
 /* ── SCIENCE ── */
@@ -572,7 +512,6 @@ border-bottom: 1px solid rgba(255,255,255,.08);
 margin-bottom: 2rem;
 }
 .footer-brand p { font-size: .88rem; line-height: 1.7; margin-top: 1rem; max-width: 260px; }
-.footer-brand .logo-text { font-size: 1.1rem; }
 footer h5 { color: var(–white); font-size: .9rem; font-weight: 600; margin-bottom: 1rem; }
 footer ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
 footer ul li a { color: rgba(255,255,255,.55); text-decoration: none; font-size: .88rem; transition: color .2s; }
@@ -603,8 +542,7 @@ margin-top: .5rem;
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
 nav { display: none; }
-.tech-grid,
-.science-grid { grid-template-columns: 1fr; }
+.tech-grid, .science-grid { grid-template-columns: 1fr; }
 .privacy-grid { grid-template-columns: 1fr; }
 .elite-perks  { grid-template-columns: 1fr; }
 .form-row     { grid-template-columns: 1fr; }
@@ -615,8 +553,6 @@ nav { display: none; }
 
 </head>
 <body>
-
-<!-- ══ HEADER ══ -->
 
 <header>
   <a href="#" class="logo">
@@ -632,20 +568,13 @@ nav { display: none; }
   </nav>
 </header>
 
-<!-- ══ HERO ══ -->
-
 <section class="hero" id="hero">
   <div class="ring ring-1"></div>
   <div class="ring ring-2"></div>
   <div class="ring ring-3"></div>
   <div class="hero-content">
-    <div class="hero-badge">
-      <span>◉</span> BETA LANSMAN — ELİTE 3000 AÇIK
-    </div>
-    <h1>
-      Glikoz Takibinin<br>
-      <em>Ötesine Geç.</em>
-    </h1>
+    <div class="hero-badge"><span>◉</span> BETA LANSMAN — ELİTE 3000 AÇIK</div>
+    <h1>Glikoz Takibinin<br><em>Ötesine Geç.</em></h1>
     <p class="hero-sub">
       GlucoNavigator, yalnızca ölçüm yapmaz — yorumlar.
       Stres, uyku ve hareket verilerini birleştiren yapay zeka motoru,
@@ -672,8 +601,6 @@ nav { display: none; }
   </div>
 </section>
 
-<!-- ══ TEKNOLOJİ ══ -->
-
 <section class="tech" id="teknoloji">
   <div class="container">
     <p class="section-label">Temel Teknoloji</p>
@@ -689,81 +616,63 @@ nav { display: none; }
           <div class="tech-icon">📊</div>
           <div>
             <h4>Tahmine Dayalı Analitik</h4>
-            <p>Geçmiş örüntülerinizi analiz eden motor, glikoz dalgalanmalarını
-               gerçekleşmeden önce tespit eder ve sizi uyarır.</p>
+            <p>Geçmiş örüntülerinizi analiz eden motor, glikoz dalgalanmalarını gerçekleşmeden önce tespit eder ve sizi uyarır.</p>
           </div>
         </div>
         <div class="tech-card">
           <div class="tech-icon">🧠</div>
           <div>
             <h4>Stres–Glikoz Korelasyonu</h4>
-            <p>Kortizol yükü ile kan şekeri arasındaki ilişkiyi modelleyen
-               algoritmamız, duygusal tetikleyicileri görünür kılar.</p>
+            <p>Kortizol yükü ile kan şekeri arasındaki ilişkiyi modelleyen algoritmamız, duygusal tetikleyicileri görünür kılar.</p>
           </div>
         </div>
         <div class="tech-card">
           <div class="tech-icon">🔒</div>
           <div>
             <h4>Data Integrity Guard</h4>
-            <p>Verileriniz cihazınızdan çıkmadan işlenir; sunuculara gönderilmeden
-               önce anonimleştirilir ve şifrelenir.</p>
+            <p>Verileriniz cihazınızdan çıkmadan işlenir; sunuculara gönderilmeden önce anonimleştirilir ve şifrelenir.</p>
           </div>
         </div>
         <div class="tech-card">
           <div class="tech-icon">🔬</div>
           <div>
             <h4>AR-GE Destekli Motor</h4>
-            <p>Klinik ortaklarla yürütülen Ar-Ge çalışmaları algoritmanın
-               doğruluğunu sürekli artırır.</p>
+            <p>Klinik ortaklarla yürütülen Ar-Ge çalışmaları algoritmanın doğruluğunu sürekli artırır.</p>
           </div>
         </div>
       </div>
-
-```
-  <div class="tech-visual">
-    <div class="glucose-chart">
-      <div class="chart-line">
-        <svg viewBox="0 0 300 80" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#2AC3B7" stop-opacity=".3"/>
-              <stop offset="100%" stop-color="#2AC3B7" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <!-- Zone normal -->
-          <rect x="0" y="20" width="300" height="35" fill="rgba(42,195,183,.06)" rx="2"/>
-          <!-- Glikoz eğrisi -->
-          <path d="M0,55 C20,52 40,45 60,38 C80,31 100,22 120,18 C140,14 160,20 180,30
-                   C200,40 220,55 240,48 C260,41 280,32 300,28"
-                fill="none" stroke="#2AC3B7" stroke-width="2.5" stroke-linecap="round"/>
-          <!-- Alan doldurma -->
-          <path d="M0,55 C20,52 40,45 60,38 C80,31 100,22 120,18 C140,14 160,20 180,30
-                   C200,40 220,55 240,48 C260,41 280,32 300,28 L300,80 L0,80 Z"
-                fill="url(#lineGrad)"/>
-          <!-- Uyarı noktası -->
-          <circle cx="120" cy="18" r="5" fill="#2AC3B7"/>
-          <circle cx="120" cy="18" r="9" fill="none" stroke="#2AC3B7" stroke-width="1.5" opacity=".5"/>
-        </svg>
-        <div class="chart-badge">⚡ Tahmin Aktif</div>
-      </div>
-      <div class="chart-labels">
-        <span>00:00</span><span>06:00</span><span>12:00</span>
-        <span>18:00</span><span>24:00</span>
+      <div class="tech-visual">
+        <div class="glucose-chart">
+          <div class="chart-line">
+            <svg viewBox="0 0 300 80" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#2AC3B7" stop-opacity=".3"/>
+                  <stop offset="100%" stop-color="#2AC3B7" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <rect x="0" y="20" width="300" height="35" fill="rgba(42,195,183,.06)" rx="2"/>
+              <path d="M0,55 C20,52 40,45 60,38 C80,31 100,22 120,18 C140,14 160,20 180,30 C200,40 220,55 240,48 C260,41 280,32 300,28"
+                    fill="none" stroke="#2AC3B7" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M0,55 C20,52 40,45 60,38 C80,31 100,22 120,18 C140,14 160,20 180,30 C200,40 220,55 240,48 C260,41 280,32 300,28 L300,80 L0,80 Z"
+                    fill="url(#lineGrad)"/>
+              <circle cx="120" cy="18" r="5" fill="#2AC3B7"/>
+              <circle cx="120" cy="18" r="9" fill="none" stroke="#2AC3B7" stroke-width="1.5" opacity=".5"/>
+            </svg>
+            <div class="chart-badge">⚡ Tahmin Aktif</div>
+          </div>
+          <div class="chart-labels">
+            <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>
+          </div>
+        </div>
+        <div class="tech-visual-content">
+          <h3>Gerçek Zamanlı<br>Metabolik Harita</h3>
+          <p>Glikoz, nabız, stres ve uyku verileri tek bir akıllı grafikte birleşiyor.</p>
+        </div>
       </div>
     </div>
-    <div class="tech-visual-content">
-      <h3>Gerçek Zamanlı<br>Metabolik Harita</h3>
-      <p>Glikoz, nabız, stres ve uyku verileri
-         tek bir akıllı grafikte birleşiyor.</p>
-    </div>
-  </div>
-</div>
-```
-
   </div>
 </section>
-
-<!-- ══ GİZLİLİK ══ -->
 
 <section class="privacy" id="gizlilik">
   <div class="container">
@@ -771,36 +680,30 @@ nav { display: none; }
     <h2 class="section-title">Veri Sahibi<br>Hep Sizsiniz.</h2>
     <p class="section-body">
       Sağlık veriniz hassastır ve öyle kalmalıdır.
-      GlucoNavigator'ın GDPR-native mimarisi, verinizin sizi terk etmesini
-      teknik olarak imkânsız kılar.
+      GlucoNavigator'ın GDPR-native mimarisi, verinizin sizi terk etmesini teknik olarak imkânsız kılar.
     </p>
     <div class="privacy-grid">
       <div class="privacy-card">
         <span class="icon">🏛️</span>
         <h4>GDPR & KVKK Tam Uyum</h4>
-        <p>Avrupa ve Türkiye gizlilik mevzuatına uygun veri işleme süreçleri.
-           Onay belgesi her zaman erişilebilir durumda.</p>
+        <p>Avrupa ve Türkiye gizlilik mevzuatına uygun veri işleme süreçleri. Onay belgesi her zaman erişilebilir durumda.</p>
         <span class="tag">GDPR-NATIVE</span>
       </div>
       <div class="privacy-card">
         <span class="icon">🔐</span>
         <h4>Sıfır Tanımlayıcı İlkesi</h4>
-        <p>İsim, TC kimlik, telefon — hiçbir kişisel tanımlayıcı sunucularımıza
-           ulaşmaz. Veriniz sizi tanımlar, bizi değil.</p>
+        <p>İsim, TC kimlik, telefon — hiçbir kişisel tanımlayıcı sunucularımıza ulaşmaz. Veriniz sizi tanımlar, bizi değil.</p>
         <span class="tag">ZERO-ID</span>
       </div>
       <div class="privacy-card">
         <span class="icon">🔬</span>
         <h4>Yerelden İşleme (On-Device)</h4>
-        <p>Hassas hesaplamalar cihazınızda gerçekleşir.
-           Buluta yalnızca anonim ve şifrelenmiş veriler iletilir.</p>
+        <p>Hassas hesaplamalar cihazınızda gerçekleşir. Buluta yalnızca anonim ve şifrelenmiş veriler iletilir.</p>
         <span class="tag">ON-DEVICE</span>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ══ ELİTE 3000 ══ -->
 
 <section class="elite" id="elite">
   <div class="container">
@@ -808,25 +711,24 @@ nav { display: none; }
     <h2 class="section-title">Elite 3000:<br>Hikâyenin Ortak Yazarları.</h2>
     <p class="section-body">
       İlk 3.000 üye yalnızca kullanıcı değildir —
-      GlucoNavigator'ın dönüşüm hikâyesini bizimle birlikte yazan
-      Onursal Kuruculardır.
+      GlucoNavigator'ın dönüşüm hikâyesini bizimle birlikte yazan Onursal Kuruculardır.
     </p>
     <div class="elite-perks">
       <div class="perk">
         <span class="perk-check">✓</span>
-        <div class="perk-text"><strong>Ömür Boyu Ücretsiz</strong><br>Premium özelliklere kalıcı, koşulsuz erişim.</div>
+        <div class="perk-text"><strong>Ömür Boyu Ücretsiz</strong>Premium özelliklere kalıcı, koşulsuz erişim.</div>
       </div>
       <div class="perk">
         <span class="perk-check">✓</span>
-        <div class="perk-text"><strong>Ürün Yol Haritası</strong><br>Hangi özelliğin önce geliştirileceğini siz belirlersiniz.</div>
+        <div class="perk-text"><strong>Ürün Yol Haritası</strong>Hangi özelliğin önce geliştirileceğini siz belirlersiniz.</div>
       </div>
       <div class="perk">
         <span class="perk-check">✓</span>
-        <div class="perk-text"><strong>Onursal Kurucu Rozeti</strong><br>Profil ve uygulama içi kalıcı tanımlama.</div>
+        <div class="perk-text"><strong>Onursal Kurucu Rozeti</strong>Profil ve uygulama içi kalıcı tanımlama.</div>
       </div>
       <div class="perk">
         <span class="perk-check">✓</span>
-        <div class="perk-text"><strong>Özel Erken Erişim</strong><br>Tüm beta ve deneysel özellikler önce size açılır.</div>
+        <div class="perk-text"><strong>Özel Erken Erişim</strong>Tüm beta ve deneysel özellikler önce size açılır.</div>
       </div>
     </div>
     <div class="elite-counter">
@@ -838,108 +740,88 @@ nav { display: none; }
   </div>
 </section>
 
-<!-- ══ BAŞVURU FORMU ══ -->
-
 <section class="apply" id="basvuru">
   <div class="container">
     <p class="section-label" style="text-align:center">Elite 3000 Başvurusu</p>
-    <h2 class="section-title" style="text-align:center;margin:0 auto 0;max-width:500px">
+    <h2 class="section-title" style="text-align:center;margin:0 auto;max-width:500px">
       Onursal Kurucu Olarak Yerini Al.
     </h2>
     <div class="apply-wrap">
-
-```
-  <!-- Satır 1: Ad + E-posta -->
-  <div class="form-row">
-    <div class="form-group">
-      <label>Ad Soyad</label>
-      <input type="text" id="f-name" placeholder="Adınızı girin">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ad Soyad</label>
+          <input type="text" id="f-name" placeholder="Adınızı girin">
+        </div>
+        <div class="form-group">
+          <label>E-posta Adresi</label>
+          <input type="email" id="f-email" placeholder="ornek@mail.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Şehir</label>
+          <input type="text" id="f-city" placeholder="İstanbul, Berlin…">
+        </div>
+        <div class="form-group">
+          <label>Ülke</label>
+          <select id="f-country">
+            <option value="">Seçiniz…</option>
+            <option>Türkiye</option>
+            <option>Almanya</option>
+            <option>Avusturya</option>
+            <option>İsviçre</option>
+            <option>Hollanda</option>
+            <option>Diğer AB ülkesi</option>
+            <option>Diğer</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Diyabet Durumu</label>
+        <select id="f-type">
+          <option value="">Seçiniz…</option>
+          <option>Tip 1 Diyabet</option>
+          <option>Tip 2 Diyabet</option>
+          <option>Prediyabet / Risk Grubu</option>
+          <option>Diyabet Yok — Metabolik Sağlık Takibi</option>
+          <option>Belirtmek İstemiyorum</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Kan Şekeri Ölçüm Sıklığı</label>
+        <select id="f-freq" onchange="checkCGM(this)">
+          <option value="">Seçiniz…</option>
+          <option>Günde 1–2 kez (parmak ucu)</option>
+          <option>Günde 3–5 kez (parmak ucu)</option>
+          <option value="cgm">Sensörlü ölçüm cihazı kullanıyorum</option>
+          <option>Henüz düzenli ölçmüyorum</option>
+        </select>
+        <div class="cgm-info" id="cgm-info">
+          <strong>Sensörlü ölçüm cihazı nedir?</strong> Parmağa batırmadan,
+          cilde yapıştırılan küçük bir sensör aracılığıyla kan şekerini
+          sürekli takip eden cihazdır. GlucoNavigator, bu tür sensörlü
+          ölçüm sistemleriyle uyumlu çalışmak üzere tasarlanmaktadır.
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Bu platforma katılmak istemenizin nedeni <span style="font-weight:400;color:var(--muted)">(isteğe bağlı)</span></label>
+        <textarea id="f-motivation" placeholder="Beklentilerinizi, sorularınızı veya hikâyenizi kısaca paylaşabilirsiniz…"></textarea>
+      </div>
+      <div class="form-group" style="margin-bottom:.5rem">
+        <label style="display:flex;align-items:flex-start;gap:.8rem;cursor:pointer">
+          <input type="checkbox" id="f-gdpr" style="accent-color:var(--teal);width:16px;height:16px;margin-top:2px;flex-shrink:0">
+          <span style="font-size:.85rem;color:var(--muted);line-height:1.6">
+            <a href="#" style="color:var(--teal);text-decoration:none">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum.
+            Verilerim yalnızca başvuru sürecinde kullanılacak, üçüncü taraflarla paylaşılmayacaktır.
+            &nbsp;·&nbsp; GDPR &amp; KVKK uyumludur.
+          </span>
+        </label>
+      </div>
+      <button class="form-submit" onclick="submitForm()">🎯 Elite 3000'e Başvur — Ücretsiz</button>
+      <p class="form-note" id="form-msg"></p>
     </div>
-    <div class="form-group">
-      <label>E-posta Adresi</label>
-      <input type="email" id="f-email" placeholder="ornek@mail.com">
-    </div>
-  </div>
-
-  <!-- Satır 2: Şehir + Ülke -->
-  <div class="form-row">
-    <div class="form-group">
-      <label>Şehir</label>
-      <input type="text" id="f-city" placeholder="İstanbul, Berlin…">
-    </div>
-    <div class="form-group">
-      <label>Ülke</label>
-      <select id="f-country">
-        <option value="">Seçiniz…</option>
-        <option>Türkiye</option>
-        <option>Almanya</option>
-        <option>Avusturya</option>
-        <option>İsviçre</option>
-        <option>Hollanda</option>
-        <option>Diğer AB ülkesi</option>
-        <option>Diğer</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- Diyabet Tipi -->
-  <div class="form-group">
-    <label>Diyabet Durumu</label>
-    <select id="f-type">
-      <option value="">Seçiniz…</option>
-      <option>Tip 1 Diyabet</option>
-      <option>Tip 2 Diyabet</option>
-      <option>Prediyabet / Risk Grubu</option>
-      <option>Diyabet Yok — Metabolik Sağlık Takibi</option>
-      <option>Belirtmek İstemiyorum</option>
-    </select>
-  </div>
-
-  <!-- Ölçüm Sıklığı -->
-  <div class="form-group">
-    <label>Kan Şekeri Ölçüm Sıklığı</label>
-    <select id="f-freq" onchange="checkCGM(this)">
-      <option value="">Seçiniz…</option>
-      <option>Günde 1–2 kez (parmak ucu)</option>
-      <option>Günde 3–5 kez (parmak ucu)</option>
-      <option value="cgm">Sensörlü ölçüm cihazı kullanıyorum</option>
-      <option>Henüz düzenli ölçmüyorum</option>
-    </select>
-    <div class="cgm-info" id="cgm-info">
-      <strong>Sensörlü ölçüm cihazı nedir?</strong> Parmağa batırmadan,
-      cilde yapıştırılan küçük bir sensör aracılığıyla kan şekerini
-      sürekli takip eden cihazdır. GlucoNavigator, bu tür sensörlü
-      ölçüm sistemleriyle uyumlu çalışmak üzere tasarlanmaktadır.
-    </div>
-  </div>
-
-  <!-- Motivasyon -->
-  <div class="form-group">
-    <label>Bu platforma katılmak istemenizin nedeni <span style="font-weight:400;color:var(--muted)">(isteğe bağlı)</span></label>
-    <textarea id="f-motivation" placeholder="Beklentilerinizi, sorularınızı veya hikâyenizi kısaca paylaşabilirsiniz…"></textarea>
-  </div>
-
-  <!-- GDPR onay -->
-  <div class="form-group" style="margin-bottom:.5rem">
-    <label class="radio-item" style="align-items:flex-start;gap:.8rem">
-      <input type="checkbox" id="f-gdpr" style="accent-color:var(--teal);width:16px;height:16px;margin-top:2px;flex-shrink:0">
-      <span style="font-size:.85rem;color:var(--muted);line-height:1.6">
-        <a href="#" style="color:var(--teal);text-decoration:none">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum.
-        Verilerim yalnızca başvuru sürecinde kullanılacak, üçüncü taraflarla paylaşılmayacaktır.
-        &nbsp;·&nbsp; GDPR &amp; KVKK uyumludur.
-      </span>
-    </label>
-  </div>
-
-  <button class="form-submit" onclick="submitForm()">🎯 Elite 3000'e Başvur — Ücretsiz</button>
-  <p class="form-note" id="form-msg"></p>
-</div>
-```
-
   </div>
 </section>
-
-<!-- ══ BİLİMSEL ZEMİN ══ -->
 
 <section class="science" id="bilim">
   <div class="container">
@@ -951,41 +833,35 @@ nav { display: none; }
           <span class="sci-num">01</span>
           <div>
             <h5>Postprandiyal Glikoz Modellemesi</h5>
-            <p>Yemek sonrası glikoz tepkisini kişiye özgü makro-besin profiliyle
-               modelleyen makine öğrenmesi katmanı.</p>
+            <p>Yemek sonrası glikoz tepkisini kişiye özgü makro-besin profiliyle modelleyen makine öğrenmesi katmanı.</p>
           </div>
         </li>
         <li class="science-item">
           <span class="sci-num">02</span>
           <div>
             <h5>Sirkadiyen Ritim Entegrasyonu</h5>
-            <p>Uyku döngüsü ve kortizol örüntüleri, insülin duyarlılığı
-               tahminlerine dahil edilir.</p>
+            <p>Uyku döngüsü ve kortizol örüntüleri, insülin duyarlılığı tahminlerine dahil edilir.</p>
           </div>
         </li>
         <li class="science-item">
           <span class="sci-num">03</span>
           <div>
             <h5>Egzersiz–Glikoz Dinamikleri</h5>
-            <p>Aerobik ve anaerobik aktivitelerin kısa/uzun vadeli glikoz
-               üzerindeki farklı etkilerini ayrıştıran model.</p>
+            <p>Aerobik ve anaerobik aktivitelerin kısa/uzun vadeli glikoz üzerindeki farklı etkilerini ayrıştıran model.</p>
           </div>
         </li>
         <li class="science-item">
           <span class="sci-num">04</span>
           <div>
             <h5>Çok Değişkenli Anomali Tespiti</h5>
-            <p>Tek bir değere bakmak yanıltabilir; motorumuz 7 biyometrik
-               kaynağı eş zamanlı işleyerek tutarsızlıkları yakalar.</p>
+            <p>Tek bir değere bakmak yanıltabilir; motorumuz 7 biyometrik kaynağı eş zamanlı işleyerek tutarsızlıkları yakalar.</p>
           </div>
         </li>
       </ul>
       <div class="science-aside">
         <h4>Data Integrity Guard™</h4>
-        <p>Her ölçümün güvenilirliğini değerlendiren doğrulama katmanı,
-           sensör hatalarını ve olağandışı değerleri otomatik olarak işaretler.</p>
-        <p>Ar-Ge sürecimiz klinik ortaklarla birlikte yürütülmekte;
-           model güncellemeleri düzenli doğrulama döngüleriyle geçirilmektedir.</p>
+        <p>Her ölçümün güvenilirliğini değerlendiren doğrulama katmanı, sensör hatalarını ve olağandışı değerleri otomatik olarak işaretler.</p>
+        <p>Ar-Ge sürecimiz klinik ortaklarla birlikte yürütülmekte; model güncellemeleri düzenli doğrulama döngüleriyle geçirilmektedir.</p>
         <div>
           <span class="science-chip">ISO 27001</span>
           <span class="science-chip">HL7 FHIR</span>
@@ -998,8 +874,6 @@ nav { display: none; }
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
-
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -1007,10 +881,9 @@ nav { display: none; }
         <div class="logo-icon" style="width:32px;height:32px;font-size:1.1rem">🧭</div>
         <span class="logo-text">Gluco<span>Navigator</span></span>
       </a>
-      <p>Metabolik sağlığı herkes için anlaşılır kılmak amacıyla geliştirilen
-         yapay zeka destekli glikoz navigasyon platformu.</p>
+      <p>Metabolik sağlığı herkes için anlaşılır kılmak amacıyla geliştirilen yapay zeka destekli glikoz navigasyon platformu.</p>
       <p class="trademark">
-        Marka Tescil No: <span style="color:rgba(255,255,255,.5);font-weight:600;pointer-events:none;-webkit-user-select:text;user-select:text">4096543</span>
+        Marka Tescil No: <span style="color:rgba(255,255,255,.5);font-weight:600">4096543</span>
         &nbsp;·&nbsp; Tescil: 16 Mart 2026
       </p>
     </div>
@@ -1035,14 +908,12 @@ nav { display: none; }
     <div>
       <h5>İletişim</h5>
       <ul>
-        <li><a href="/cdn-cgi/l/email-protection#1d74737b725d7a71687e72737c6b747a7c69726f337472"><span class="__cf_email__" data-cfemail="620b0c040d22050e17010d0c03140b0503160d104c0b0d">[email&#160;protected]</span></a></li>
+        <li><a href="mailto:info@gluconavigator.io">info@gluconavigator.io</a></li>
         <li><a href="#">Berlin / Frankfurt</a></li>
         <li><a href="#">Destek Merkezi</a></li>
       </ul>
       <div style="margin-top:1.5rem">
-        <div class="pacdi-badge">
-          🌐 PACDI Ekosistemi
-        </div>
+        <div class="pacdi-badge">🌐 PACDI Ekosistemi</div>
       </div>
     </div>
   </div>
@@ -1058,13 +929,11 @@ nav { display: none; }
 </footer>
 
 <script>
-  // CGM bilgi kutusu
   function checkCGM(sel) {
     const box = document.getElementById('cgm-info');
     box.classList.toggle('visible', sel.value === 'cgm');
   }
 
-  // Form gönderimi
   async function submitForm() {
     const name       = document.getElementById('f-name').value.trim();
     const email      = document.getElementById('f-email').value.trim();
@@ -1087,21 +956,15 @@ nav { display: none; }
       msg.textContent = '⚠️ Devam etmek için gizlilik politikasını onaylayın.';
       return;
     }
-
     btn.textContent = '⏳ Gönderiliyor...';
     btn.disabled = true;
-
     try {
       const response = await fetch('https://formspree.io/f/xbdzpdwp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          name, email, city, country,
-          diyabet_tipi: type,
-          olcum_sikligi: freq,
-          motivasyon: motivation,
-          kaynak: 'GlucoNavigator Elite 3000'
-        })
+        body: JSON.stringify({ name, email, city, country,
+          diyabet_tipi: type, olcum_sikligi: freq,
+          motivasyon: motivation, kaynak: 'GlucoNavigator Elite 3000' })
       });
       if (response.ok) {
         btn.textContent = '✅ Başvurunuz alındı! Sizi bekliyoruz.';
@@ -1109,19 +972,19 @@ nav { display: none; }
         msg.style.color = 'var(--muted)';
         msg.textContent = 'En kısa sürede bilgilendirme e-postası gönderilecektir.';
       } else {
-        btn.textContent = '🎯 Elite 3000\'e Başvur — Ücretsiz';
+        btn.textContent = "🎯 Elite 3000'e Başvur — Ücretsiz";
         btn.disabled = false;
         msg.style.color = '#e67e22';
         msg.textContent = '⚠️ Bir hata oluştu, lütfen tekrar deneyin.';
       }
     } catch(err) {
-      btn.textContent = '🎯 Elite 3000\'e Başvur — Ücretsiz';
+      btn.textContent = "🎯 Elite 3000'e Başvur — Ücretsiz";
       btn.disabled = false;
       msg.style.color = '#e67e22';
       msg.textContent = '⚠️ Bağlantı hatası, lütfen tekrar deneyin.';
     }
   }
-  // Counter animasyonu
+
   window.addEventListener('load', () => {
     setTimeout(() => {
       const fill = document.getElementById('fill');
