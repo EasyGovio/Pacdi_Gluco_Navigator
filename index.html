@@ -895,7 +895,21 @@ nav { display: none; }
   </div>
 </footer>
 
-<script src="lang.js"></script>
-
-</body>
-</html>
+<script>
+window.onload=function(){
+var b=document.querySelectorAll(".lang-switch button");
+for(var i=0;i<b.length;i++){b[i].addEventListener("click",function(){
+var l=this.id.replace("btn-","");
+document.querySelectorAll(".lang-switch button").forEach(function(x){x.classList.remove("active")});
+this.classList.add("active");
+document.documentElement.lang=l;
+if(window.i18n&&window.i18n[l]){
+var t=window.i18n[l];
+document.querySelectorAll("[data-i18n]").forEach(function(e){var k=e.getAttribute("data-i18n");if(t[k])e.innerHTML=t[k];});
+}
+}.bind(b[i]));}
+if(window.i18n)setLang("tr");
+var f=document.getElementById("fill");
+if(f)setTimeout(function(){f.style.width="18%"},500);
+};
+</script>
