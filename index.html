@@ -1,247 +1,1112 @@
-var i18n = {
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no, address=no, email=no">
+<title>GlucoNavigator — Beyond Sensing, Into Living</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:     #0A1A3A;
+    --navy-mid: #1A2B4C;
+    --teal:     #2AC3B7;
+    --teal-dk:  #1BB5A9;
+    --teal-pale:#E8FAF9;
+    --grey-bg:  #F5F7FA;
+    --white:    #FFFFFF;
+    --text:     #1C2B3A;
+    --muted:    #6B7A8D;
+    --border:   #D8E4EE;
+  }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–white);
+color: var(–text);
+overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+header {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+background: rgba(10,26,58,0.97);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(42,195,183,.18);
+padding: 0 2rem;
+height: 68px;
+display: flex; align-items: center; justify-content: space-between;
+}
+.logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+.logo-icon {
+width: 38px; height: 38px;
+background: linear-gradient(135deg, var(–teal), #1BB5A9);
+border-radius: 10px;
+display: flex; align-items: center; justify-content: center;
+font-size: 1.3rem;
+}
+.logo-text {
+font-family: ‘DM Serif Display’, serif;
+font-size: 1.25rem;
+color: var(–white);
+letter-spacing: -.02em;
+}
+.logo-text span { color: var(–teal); }
+
+.header-right { display: flex; align-items: center; gap: 1.5rem; }
+
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a {
+color: rgba(255,255,255,.72);
+text-decoration: none;
+font-size: .88rem;
+font-weight: 500;
+transition: color .2s;
+}
+nav a:hover { color: var(–teal); }
+.nav-cta {
+background: var(–teal);
+color: var(–navy) !important;
+padding: .5rem 1.2rem;
+border-radius: 8px;
+font-weight: 600 !important;
+transition: background .2s !important;
+}
+.nav-cta:hover { background: var(–teal-dk) !important; }
+
+/* Lang Switch */
+.lang-switch { display: flex; gap: .4rem; }
+.lang-switch button {
+background: none;
+border: 1px solid rgba(255,255,255,.2);
+color: rgba(255,255,255,.6);
+font-family: ‘Space Mono’, monospace;
+font-size: .68rem;
+letter-spacing: .08em;
+padding: .25rem .6rem;
+cursor: pointer;
+border-radius: 4px;
+transition: all .2s;
+}
+.lang-switch button:hover,
+.lang-switch button.active {
+color: var(–teal);
+border-color: var(–teal);
+background: rgba(42,195,183,.08);
+}
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+background-color: #0A1A3A;
+background: linear-gradient(160deg, #0A1A3A 0%, #1A2B4C 60%, #0D2A40 100%);
+-webkit-background-color: #0A1A3A;
+display: flex; align-items: center;
+padding: 120px 2rem 80px;
+position: relative;
+overflow: hidden;
+}
+.hero::before {
+content: ‘’;
+position: absolute; inset: 0;
+background:
+radial-gradient(ellipse 700px 500px at 70% 40%, rgba(42,195,183,.12) 0%, transparent 70%),
+radial-gradient(ellipse 400px 400px at 20% 80%, rgba(42,195,183,.07) 0%, transparent 60%);
+pointer-events: none;
+}
+.ring {
+position: absolute;
+border-radius: 50%;
+border: 1px solid rgba(42,195,183,.1);
+animation: pulse-ring 6s ease-in-out infinite;
+}
+.ring-1 { width:600px; height:600px; right:-150px; top:-100px; animation-delay:0s; }
+.ring-2 { width:400px; height:400px; right:-50px;  top:50px;   animation-delay:1.5s; }
+.ring-3 { width:200px; height:200px; right:80px;   top:180px;  animation-delay:3s; border-color:rgba(42,195,183,.2); }
+@keyframes pulse-ring {
+0%,100% { opacity:.5; transform:scale(1); }
+50%      { opacity:1;  transform:scale(1.04); }
+}
+
+.hero-content { max-width: 680px; position: relative; z-index: 2; }
+.hero-badge {
+display: inline-flex; align-items: center; gap: .5rem;
+background: rgba(42,195,183,.15);
+border: 1px solid rgba(42,195,183,.3);
+color: #2AC3B7 !important;
+-webkit-text-fill-color: #2AC3B7;
+font-size: .78rem;
+font-family: ‘Space Mono’, monospace;
+letter-spacing: .08em;
+padding: .4rem 1rem;
+border-radius: 100px;
+margin-bottom: 2rem;
+}
+.hero h1 {
+font-family: ‘DM Serif Display’, serif;
+font-size: clamp(2.6rem, 6vw, 4.2rem);
+line-height: 1.1;
+color: #FFFFFF !important;
+-webkit-text-fill-color: #FFFFFF;
+margin-bottom: 1.2rem;
+}
+.hero h1 em { font-style: italic; color: #2AC3B7 !important; -webkit-text-fill-color: #2AC3B7; }
+.hero-sub {
+font-size: 1.1rem;
+color: rgba(255,255,255,.7) !important;
+-webkit-text-fill-color: rgba(255,255,255,.7);
+line-height: 1.7;
+max-width: 540px;
+margin-bottom: 2.5rem;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+background: var(–teal);
+color: var(–navy);
+padding: .9rem 2rem;
+border-radius: 10px;
+font-weight: 700;
+font-size: 1rem;
+text-decoration: none;
+border: none; cursor: pointer;
+transition: background .2s, transform .15s;
+display: inline-flex; align-items: center; gap: .5rem;
+}
+.btn-primary:hover { background: var(–teal-dk); transform: translateY(-1px); }
+.btn-outline {
+background: transparent;
+color: var(–white);
+padding: .9rem 2rem;
+border-radius: 10px;
+font-weight: 600;
+font-size: 1rem;
+text-decoration: none;
+border: 1px solid rgba(255,255,255,.3);
+cursor: pointer;
+transition: border-color .2s, background .2s;
+}
+.btn-outline:hover { border-color: var(–teal); background: rgba(42,195,183,.08); }
+.hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; }
+.stat-num {
+font-family: ‘Space Mono’, monospace;
+font-size: 1.8rem;
+font-weight: 700;
+color: var(–teal);
+display: block;
+}
+.stat-label {
+font-size: .8rem;
+color: rgba(255,255,255,.5);
+letter-spacing: .05em;
+text-transform: uppercase;
+}
+
+/* ── SECTIONS ── */
+section { padding: 100px 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label {
+font-family: ‘Space Mono’, monospace;
+font-size: .72rem;
+letter-spacing: .15em;
+text-transform: uppercase;
+color: var(–teal);
+margin-bottom: 1rem;
+}
+.section-title {
+font-family: ‘DM Serif Display’, serif;
+font-size: clamp(1.8rem, 4vw, 2.8rem);
+line-height: 1.2;
+color: var(–navy);
+margin-bottom: 1.2rem;
+}
+.section-body {
+font-size: 1.05rem;
+color: var(–muted);
+line-height: 1.8;
+max-width: 600px;
+}
+
+/* ── TECH ── */
+.tech { background: var(–grey-bg); }
+.tech-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3rem;
+align-items: center;
+margin-top: 4rem;
+}
+.tech-cards { display: flex; flex-direction: column; gap: 1rem; }
+.tech-card {
+background: var(–white);
+border: 1px solid var(–border);
+border-radius: 14px;
+padding: 1.5rem;
+display: flex; gap: 1rem; align-items: flex-start;
+transition: box-shadow .2s, border-color .2s;
+}
+.tech-card:hover { box-shadow: 0 8px 32px rgba(10,26,58,.08); border-color: var(–teal); }
+.tech-icon {
+width: 44px; height: 44px; border-radius: 10px;
+background: var(–teal-pale);
+display: flex; align-items: center; justify-content: center;
+font-size: 1.3rem; flex-shrink: 0;
+}
+.tech-card h4 { font-size: 1rem; font-weight: 600; color: var(–navy); margin-bottom: .3rem; }
+.tech-card p  { font-size: .88rem; color: var(–muted); line-height: 1.6; }
+.tech-visual {
+background: linear-gradient(135deg, var(–navy) 0%, var(–navy-mid) 100%);
+border-radius: 20px;
+padding: 2.5rem;
+position: relative;
+overflow: hidden;
+min-height: 380px;
+display: flex; flex-direction: column; justify-content: flex-end;
+}
+.tech-visual::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: radial-gradient(ellipse at 60% 30%, rgba(42,195,183,.2) 0%, transparent 65%);
+}
+.glucose-chart { position: absolute; top: 1.5rem; left: 1.5rem; right: 1.5rem; }
+.chart-line { width: 100%; height: 80px; position: relative; }
+.chart-line svg { width: 100%; height: 100%; }
+.chart-labels {
+display: flex; justify-content: space-between;
+font-family: ‘Space Mono’, monospace;
+font-size: .65rem;
+color: rgba(255,255,255,.4);
+margin-top: .5rem;
+}
+.chart-badge {
+position: absolute; top: .5rem; right: 0;
+background: rgba(42,195,183,.2);
+border: 1px solid rgba(42,195,183,.4);
+border-radius: 8px;
+padding: .3rem .7rem;
+font-family: ‘Space Mono’, monospace;
+font-size: .72rem;
+color: var(–teal);
+}
+.tech-visual-content { position: relative; z-index: 2; }
+.tech-visual-content h3 {
+font-family: ‘DM Serif Display’, serif;
+font-size: 1.4rem;
+color: var(–white);
+margin-bottom: .5rem;
+}
+.tech-visual-content p { font-size: .88rem; color: rgba(255,255,255,.6); line-height: 1.6; }
+
+/* ── PRIVACY ── */
+.privacy { background: var(–white); }
+.privacy-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem;
+margin-top: 3.5rem;
+}
+.privacy-card {
+border: 1px solid var(–border);
+border-radius: 16px;
+padding: 2rem 1.5rem;
+transition: box-shadow .2s;
+}
+.privacy-card:hover { box-shadow: 0 8px 32px rgba(10,26,58,.07); }
+.privacy-card .icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.privacy-card h4 { font-size: 1.05rem; font-weight: 600; color: var(–navy); margin-bottom: .5rem; }
+.privacy-card p  { font-size: .88rem; color: var(–muted); line-height: 1.6; }
+.privacy-card .tag {
+display: inline-block;
+margin-top: 1rem;
+background: var(–teal-pale);
+color: var(–teal-dk);
+font-size: .72rem;
+font-family: ‘Space Mono’, monospace;
+padding: .25rem .7rem;
+border-radius: 100px;
+font-weight: 700;
+}
+
+/* ── ELITE ── */
+.elite {
+background-color: #0A1A3A;
+background: linear-gradient(160deg, #0A1A3A 0%, #0D2A40 100%);
+position: relative; overflow: hidden;
+}
+.elite::before {
+content: ‘3000’;
+position: absolute;
+font-family: ‘DM Serif Display’, serif;
+font-size: 28rem; font-weight: 900;
+color: rgba(42,195,183,.04);
+right: -4rem; top: -4rem;
+pointer-events: none; line-height: 1;
+}
+.elite .section-title { color: var(–white); }
+.elite .section-body  { color: rgba(255,255,255,.65); }
+.elite-perks {
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 1.25rem; margin-top: 3rem; max-width: 640px;
+}
+.perk {
+background: rgba(255,255,255,.05);
+border: 1px solid rgba(42,195,183,.18);
+border-radius: 12px;
+padding: 1.25rem 1.5rem;
+display: flex; gap: .8rem; align-items: flex-start;
+}
+.perk-check { color: var(–teal); font-size: 1.1rem; flex-shrink: 0; margin-top: .1rem; }
+.perk-text { font-size: .9rem; color: rgba(255,255,255,.9); line-height: 1.5; }
+.perk-text strong { color: #fff; display: block; margin-bottom: .3rem; font-size: .95rem; }
+.elite-counter { margin-top: 3rem; display: flex; align-items: center; gap: 1.5rem; }
+.counter-bar {
+flex: 1; max-width: 320px; height: 8px;
+background: rgba(255,255,255,.1);
+border-radius: 100px; overflow: hidden;
+}
+.counter-fill {
+height: 100%; width: 0%;
+background: linear-gradient(90deg, var(–teal-dk), var(–teal));
+border-radius: 100px;
+transition: width 1.5s ease;
+}
+.counter-text {
+font-family: ‘Space Mono’, monospace;
+font-size: .8rem; color: rgba(255,255,255,.5);
+}
+.counter-text strong { color: var(–teal); }
+
+/* ── APPLY ── */
+.apply { background: var(–grey-bg); }
+.apply-wrap {
+max-width: 680px; margin: 3.5rem auto 0;
+background: var(–white);
+border-radius: 24px; padding: 3rem;
+border: 1px solid var(–border);
+box-shadow: 0 16px 64px rgba(10,26,58,.07);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.2rem; }
+.form-group label { font-size: .85rem; font-weight: 600; color: var(–navy); }
+.form-group input,
+.form-group select {
+padding: .75rem 1rem;
+border: 1.5px solid var(–border);
+border-radius: 10px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: .95rem; color: var(–text);
+outline: none; transition: border-color .2s;
+background: var(–white);
+}
+.form-group input:focus,
+.form-group select:focus { border-color: var(–teal); }
+.form-group input::placeholder { color: #B0BEC5; }
+.form-group textarea {
+padding: .75rem 1rem;
+border: 1.5px solid var(–border);
+border-radius: 10px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: .95rem; color: var(–text);
+outline: none; transition: border-color .2s;
+background: var(–white);
+resize: vertical; min-height: 90px;
+}
+.form-group textarea:focus { border-color: var(–teal); }
+.form-group textarea::placeholder { color: #B0BEC5; }
+.cgm-info {
+background: var(–teal-pale);
+border: 1px solid rgba(42,195,183,.25);
+border-radius: 10px;
+padding: .85rem 1.1rem;
+font-size: .82rem; color: var(–navy); line-height: 1.6;
+margin-top: -.4rem; margin-bottom: .8rem;
+display: none;
+}
+.cgm-info.visible { display: block; }
+.cgm-info strong { color: var(–teal-dk); }
+.form-submit {
+width: 100%; padding: 1rem;
+background: var(–teal); color: var(–navy);
+border: none; border-radius: 12px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 1.05rem; font-weight: 700;
+cursor: pointer;
+transition: background .2s, transform .15s;
+margin-top: .5rem;
+}
+.form-submit:hover { background: var(–teal-dk); transform: translateY(-1px); }
+.form-note { text-align: center; font-size: .78rem; color: var(–muted); margin-top: 1rem; line-height: 1.6; }
+
+/* ── SCIENCE ── */
+.science { background: var(–white); }
+.science-grid {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 4rem; align-items: center; margin-top: 4rem;
+}
+.science-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+.science-item {
+display: flex; gap: 1rem; align-items: flex-start;
+padding: 1.25rem; border-radius: 12px;
+border: 1px solid var(–border); transition: border-color .2s;
+}
+.science-item:hover { border-color: var(–teal); }
+.sci-num {
+font-family: ‘Space Mono’, monospace;
+font-size: .7rem; color: var(–teal);
+background: var(–teal-pale);
+border-radius: 6px; padding: .25rem .5rem;
+flex-shrink: 0; margin-top: .1rem;
+}
+.science-item h5 { font-size: .95rem; font-weight: 600; color: var(–navy); margin-bottom: .25rem; }
+.science-item p  { font-size: .85rem; color: var(–muted); line-height: 1.5; }
+.science-aside {
+background: linear-gradient(160deg, var(–teal-pale), #d0f4f1);
+border-radius: 20px; padding: 2.5rem;
+border: 1px solid rgba(42,195,183,.2);
+}
+.science-aside h4 {
+font-family: ‘DM Serif Display’, serif;
+font-size: 1.5rem; color: var(–navy); margin-bottom: 1rem;
+}
+.science-aside p { font-size: .9rem; color: var(–navy); opacity: .75; line-height: 1.7; margin-bottom: 1rem; }
+.science-chip {
+display: inline-block;
+background: var(–navy); color: var(–white);
+font-size: .72rem; font-family: ‘Space Mono’, monospace;
+padding: .3rem .8rem; border-radius: 6px; margin: .2rem;
+}
+
+/* ── FOOTER ── */
+footer {
+background-color: #0A1A3A;
+background: #0A1A3A;
+padding: 4rem 2rem 2rem;
+color: rgba(255,255,255,.6);
+}
+.footer-grid {
+max-width: 1100px; margin: 0 auto;
+display: grid;
+grid-template-columns: 2fr 1fr 1fr 1fr;
+gap: 3rem; padding-bottom: 3rem;
+border-bottom: 1px solid rgba(255,255,255,.08);
+margin-bottom: 2rem;
+}
+.footer-brand p { font-size: .88rem; line-height: 1.7; margin-top: 1rem; max-width: 260px; }
+footer h5 { color: var(–white); font-size: .9rem; font-weight: 600; margin-bottom: 1rem; }
+footer ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+footer ul li a { color: rgba(255,255,255,.55); text-decoration: none; font-size: .88rem; transition: color .2s; }
+footer ul li a:hover { color: var(–teal); }
+.footer-bottom {
+max-width: 1100px; margin: 0 auto;
+display: flex; justify-content: space-between; align-items: center;
+flex-wrap: wrap; gap: 1rem; font-size: .78rem;
+}
+.footer-bottom a { color: rgba(255,255,255,.5); text-decoration: none; }
+.footer-bottom a:hover { color: var(–teal); }
+.pacdi-badge {
+display: inline-flex; align-items: center; gap: .5rem;
+background: rgba(42,195,183,.1);
+border: 1px solid rgba(42,195,183,.2);
+border-radius: 8px; padding: .35rem .9rem;
+font-size: .78rem; color: var(–teal);
+}
+.trademark { font-size: .75rem; color: rgba(255,255,255,.35); margin-top: .5rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+nav { display: none; }
+.tech-grid, .science-grid { grid-template-columns: 1fr; }
+.privacy-grid { grid-template-columns: 1fr; }
+.elite-perks  { grid-template-columns: 1fr; }
+.form-row     { grid-template-columns: 1fr; }
+.footer-grid  { grid-template-columns: 1fr 1fr; }
+.hero-stats   { flex-wrap: wrap; gap: 1.5rem; }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">
+    <div class="logo-icon">🧭</div>
+    <span class="logo-text">Gluco<span>Navigator</span></span>
+  </a>
+  <div class="header-right">
+    <nav>
+      <a href="#teknoloji" data-i18n="nav_tech">Teknoloji</a>
+      <a href="#gizlilik" data-i18n="nav_privacy">Gizlilik</a>
+      <a href="#elite" data-i18n="nav_elite">Elite 3000</a>
+      <a href="#bilim" data-i18n="nav_science">Bilim</a>
+      <a href="#basvuru" class="nav-cta" data-i18n="nav_apply">Başvur →</a>
+    </nav>
+    <div class="lang-switch">
+      <button onclick="setLang('tr')" id="btn-tr" class="active">TR</button>
+      <button onclick="setLang('de')" id="btn-de">DE</button>
+      <button onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="ring ring-1"></div>
+  <div class="ring ring-2"></div>
+  <div class="ring ring-3"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span>◉</span> <span data-i18n="hero_badge">BETA LANSMAN — ELİTE 3000 AÇIK</span></div>
+    <h1 data-i18n="hero_h1">Glikoz Takibinin<br><em>Ötesine Geç.</em></h1>
+    <p class="hero-sub" data-i18n="hero_sub">
+      GlucoNavigator, yalnızca ölçüm yapmaz — yorumlar.
+      Stres, uyku ve hareket verilerini birleştiren yapay zeka motoru,
+      sizi rakamların arkasındaki gerçekle tanıştırır.
+    </p>
+    <div class="hero-actions">
+      <a href="#basvuru" class="btn-primary" data-i18n="hero_cta1">🎯 Elite 3000'e Katıl</a>
+      <a href="#teknoloji" class="btn-outline" data-i18n="hero_cta2">Teknolojiyi Keşfet</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">3.000</span>
+        <span class="stat-label" data-i18n="stat1">Kurucu Üye Kontenjanı</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">∞</span>
+        <span class="stat-label" data-i18n="stat2">Ömür Boyu Ücretsiz Erişim</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">%100</span>
+        <span class="stat-label" data-i18n="stat3">GDPR & KVKK Uyumlu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tech" id="teknoloji">
+  <div class="container">
+    <p class="section-label" data-i18n="tech_label">Temel Teknoloji</p>
+    <h2 class="section-title" data-i18n="tech_title">Software-as-a-Sensor™<br>Nedir?</h2>
+    <p class="section-body" data-i18n="tech_body">Donanımın sınırlarını aşmak için veriyi farklı okumak yeterlidir. GlucoNavigator, ham glikoz değerlerini çevresel ve biyometrik verilerle harmanlayarak size bütünsel bir metabolik tablo sunar.</p>
+    <div class="tech-grid">
+      <div class="tech-cards">
+        <div class="tech-card">
+          <div class="tech-icon">📊</div>
+          <div>
+            <h4 data-i18n="tc1_title">Tahmine Dayalı Analitik</h4>
+            <p data-i18n="tc1_body">Geçmiş örüntülerinizi analiz eden motor, glikoz dalgalanmalarını gerçekleşmeden önce tespit eder ve sizi uyarır.</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">🧠</div>
+          <div>
+            <h4 data-i18n="tc2_title">Stres–Glikoz Korelasyonu</h4>
+            <p data-i18n="tc2_body">Kortizol yükü ile kan şekeri arasındaki ilişkiyi modelleyen algoritmamız, duygusal tetikleyicileri görünür kılar.</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">🔒</div>
+          <div>
+            <h4 data-i18n="tc3_title">Data Integrity Guard</h4>
+            <p data-i18n="tc3_body">Verileriniz cihazınızdan çıkmadan işlenir; sunuculara gönderilmeden önce anonimleştirilir ve şifrelenir.</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">🔬</div>
+          <div>
+            <h4 data-i18n="tc4_title">AR-GE Destekli Motor</h4>
+            <p data-i18n="tc4_body">Klinik ortaklarla yürütülen Ar-Ge çalışmaları algoritmanın doğruluğunu sürekli artırır.</p>
+          </div>
+        </div>
+      </div>
+      <div class="tech-visual">
+        <div class="glucose-chart">
+          <div class="chart-line">
+            <svg viewBox="0 0 300 80" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#2AC3B7" stop-opacity=".3"/>
+                  <stop offset="100%" stop-color="#2AC3B7" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <rect x="0" y="20" width="300" height="35" fill="rgba(42,195,183,.06)" rx="2"/>
+              <path d="M0,55 C20,52 40,45 60,38 C80,31 100,22 120,18 C140,14 160,20 180,30 C200,40 220,55 240,48 C260,41 280,32 300,28"
+                    fill="none" stroke="#2AC3B7" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M0,55 C20,52 40,45 60,38 C80,31 100,22 120,18 C140,14 160,20 180,30 C200,40 220,55 240,48 C260,41 280,32 300,28 L300,80 L0,80 Z"
+                    fill="url(#lineGrad)"/>
+              <circle cx="120" cy="18" r="5" fill="#2AC3B7"/>
+              <circle cx="120" cy="18" r="9" fill="none" stroke="#2AC3B7" stroke-width="1.5" opacity=".5"/>
+            </svg>
+            <div class="chart-badge">⚡ <span data-i18n="chart_badge">Tahmin Aktif</span></div>
+          </div>
+          <div class="chart-labels">
+            <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>
+          </div>
+        </div>
+        <div class="tech-visual-content">
+          <h3 data-i18n="visual_title">Gerçek Zamanlı<br>Metabolik Harita</h3>
+          <p data-i18n="visual_body">Glikoz, nabız, stres ve uyku verileri tek bir akıllı grafikte birleşiyor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="privacy" id="gizlilik">
+  <div class="container">
+    <p class="section-label" data-i18n="priv_label">Anonimlik Kalkanı</p>
+    <h2 class="section-title" data-i18n="priv_title">Veri Sahibi<br>Hep Sizsiniz.</h2>
+    <p class="section-body" data-i18n="priv_body">Sağlık veriniz hassastır ve öyle kalmalıdır. GlucoNavigator'ın GDPR-native mimarisi, verinizin sizi terk etmesini teknik olarak imkânsız kılar.</p>
+    <div class="privacy-grid">
+      <div class="privacy-card">
+        <span class="icon">🏛️</span>
+        <h4 data-i18n="pc1_title">GDPR & KVKK Tam Uyum</h4>
+        <p data-i18n="pc1_body">Avrupa ve Türkiye gizlilik mevzuatına uygun veri işleme süreçleri.</p>
+        <span class="tag">GDPR-NATIVE</span>
+      </div>
+      <div class="privacy-card">
+        <span class="icon">🔐</span>
+        <h4 data-i18n="pc2_title">Sıfır Tanımlayıcı İlkesi</h4>
+        <p data-i18n="pc2_body">İsim, kimlik, telefon — hiçbir kişisel tanımlayıcı sunucularımıza ulaşmaz.</p>
+        <span class="tag">ZERO-ID</span>
+      </div>
+      <div class="privacy-card">
+        <span class="icon">🔬</span>
+        <h4 data-i18n="pc3_title">Yerelden İşleme</h4>
+        <p data-i18n="pc3_body">Hassas hesaplamalar cihazınızda gerçekleşir. Buluta yalnızca anonim veriler iletilir.</p>
+        <span class="tag">ON-DEVICE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="elite" id="elite">
+  <div class="container">
+    <p class="section-label" data-i18n="elite_label">Kurucu Topluluk</p>
+    <h2 class="section-title" data-i18n="elite_title">Elite 3000:<br>Hikâyenin Ortak Yazarları.</h2>
+    <p class="section-body" data-i18n="elite_body">İlk 3.000 üye yalnızca kullanıcı değildir — GlucoNavigator'ın dönüşüm hikâyesini bizimle birlikte yazan Onursal Kuruculardır.</p>
+    <div class="elite-perks">
+      <div class="perk">
+        <span class="perk-check">✓</span>
+        <div class="perk-text"><strong data-i18n="perk1_title">Ömür Boyu Ücretsiz</strong><span data-i18n="perk1_body">Premium özelliklere kalıcı, koşulsuz erişim.</span></div>
+      </div>
+      <div class="perk">
+        <span class="perk-check">✓</span>
+        <div class="perk-text"><strong data-i18n="perk2_title">Ürün Yol Haritası</strong><span data-i18n="perk2_body">Hangi özelliğin önce geliştirileceğini siz belirlersiniz.</span></div>
+      </div>
+      <div class="perk">
+        <span class="perk-check">✓</span>
+        <div class="perk-text"><strong data-i18n="perk3_title">Onursal Kurucu Rozeti</strong><span data-i18n="perk3_body">Profil ve uygulama içi kalıcı tanımlama.</span></div>
+      </div>
+      <div class="perk">
+        <span class="perk-check">✓</span>
+        <div class="perk-text"><strong data-i18n="perk4_title">Özel Erken Erişim</strong><span data-i18n="perk4_body">Tüm beta ve deneysel özellikler önce size açılır.</span></div>
+      </div>
+    </div>
+    <div class="elite-counter">
+      <div class="counter-bar"><div class="counter-fill" id="fill"></div></div>
+      <span class="counter-text"><strong>540</strong> / 3.000 <span data-i18n="counter_text">kontenjan doldu</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="apply" id="basvuru">
+  <div class="container">
+    <p class="section-label" style="text-align:center" data-i18n="apply_label">Elite 3000 Başvurusu</p>
+    <h2 class="section-title" style="text-align:center;margin:0 auto;max-width:500px" data-i18n="apply_title">Onursal Kurucu Olarak Yerini Al.</h2>
+    <div class="apply-wrap">
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="f_name">Ad Soyad</label>
+          <input type="text" id="f-name" data-i18n-ph="f_name_ph" placeholder="Adınızı girin">
+        </div>
+        <div class="form-group">
+          <label data-i18n="f_email">E-posta Adresi</label>
+          <input type="email" id="f-email" placeholder="ornek@mail.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="f_city">Şehir</label>
+          <input type="text" id="f-city" data-i18n-ph="f_city_ph" placeholder="İstanbul, Berlin…">
+        </div>
+        <div class="form-group">
+          <label data-i18n="f_country">Ülke</label>
+          <select id="f-country">
+            <option value="" data-i18n="f_select">Seçiniz…</option>
+            <option>Türkiye</option>
+            <option>Deutschland</option>
+            <option>Österreich</option>
+            <option>Schweiz / Switzerland</option>
+            <option>Nederland</option>
+            <option data-i18n="f_other_eu">Diğer AB ülkesi</option>
+            <option data-i18n="f_other">Diğer</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="f_diabetes">Diyabet Durumu</label>
+        <select id="f-type">
+          <option value="" data-i18n="f_select">Seçiniz…</option>
+          <option data-i18n="f_t1">Tip 1 Diyabet</option>
+          <option data-i18n="f_t2">Tip 2 Diyabet</option>
+          <option data-i18n="f_pre">Prediyabet / Risk Grubu</option>
+          <option data-i18n="f_nodm">Diyabet Yok — Metabolik Sağlık Takibi</option>
+          <option data-i18n="f_notsay">Belirtmek İstemiyorum</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-i18n="f_freq">Kan Şekeri Ölçüm Sıklığı</label>
+        <select id="f-freq" onchange="checkCGM(this)">
+          <option value="" data-i18n="f_select">Seçiniz…</option>
+          <option data-i18n="f_freq1">Günde 1–2 kez (parmak ucu)</option>
+          <option data-i18n="f_freq2">Günde 3–5 kez (parmak ucu)</option>
+          <option value="cgm" data-i18n="f_freq3">Sensörlü ölçüm cihazı kullanıyorum</option>
+          <option data-i18n="f_freq4">Henüz düzenli ölçmüyorum</option>
+        </select>
+        <div class="cgm-info" id="cgm-info">
+          <strong data-i18n="cgm_title">Sensörlü ölçüm cihazı nedir?</strong>
+          <span data-i18n="cgm_body"> Parmağa batırmadan, cilde yapıştırılan küçük bir sensör aracılığıyla kan şekerini sürekli takip eden cihazdır.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="f_motivation">Bu platforma katılmak istemenizin nedeni <span style="font-weight:400;color:var(--muted)" data-i18n="f_optional">(isteğe bağlı)</span></label>
+        <textarea id="f-motivation" data-i18n-ph="f_motivation_ph" placeholder="Beklentilerinizi paylaşabilirsiniz…"></textarea>
+      </div>
+      <div class="form-group" style="margin-bottom:.5rem">
+        <label style="display:flex;align-items:flex-start;gap:.8rem;cursor:pointer">
+          <input type="checkbox" id="f-gdpr" style="accent-color:var(--teal);width:16px;height:16px;margin-top:2px;flex-shrink:0">
+          <span style="font-size:.85rem;color:var(--muted);line-height:1.6" data-i18n="gdpr_text">
+            <a href="#" style="color:var(--teal);text-decoration:none">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum. GDPR & KVKK uyumludur.
+          </span>
+        </label>
+      </div>
+      <button class="form-submit" onclick="submitForm()" data-i18n="submit_btn">🎯 Elite 3000'e Başvur — Ücretsiz</button>
+      <p class="form-note" id="form-msg"></p>
+    </div>
+  </div>
+</section>
+
+<section class="science" id="bilim">
+  <div class="container">
+    <p class="section-label" data-i18n="sci_label">Bilimsel Zemin</p>
+    <h2 class="section-title" data-i18n="sci_title">Veriye Dayalı,<br>İnsana Odaklı.</h2>
+    <div class="science-grid">
+      <ul class="science-list">
+        <li class="science-item">
+          <span class="sci-num">01</span>
+          <div>
+            <h5 data-i18n="s1_title">Postprandiyal Glikoz Modellemesi</h5>
+            <p data-i18n="s1_body">Yemek sonrası glikoz tepkisini kişiye özgü makro-besin profiliyle modelleyen makine öğrenmesi katmanı.</p>
+          </div>
+        </li>
+        <li class="science-item">
+          <span class="sci-num">02</span>
+          <div>
+            <h5 data-i18n="s2_title">Sirkadiyen Ritim Entegrasyonu</h5>
+            <p data-i18n="s2_body">Uyku döngüsü ve kortizol örüntüleri, insülin duyarlılığı tahminlerine dahil edilir.</p>
+          </div>
+        </li>
+        <li class="science-item">
+          <span class="sci-num">03</span>
+          <div>
+            <h5 data-i18n="s3_title">Egzersiz–Glikoz Dinamikleri</h5>
+            <p data-i18n="s3_body">Aerobik ve anaerobik aktivitelerin kısa/uzun vadeli glikoz üzerindeki farklı etkilerini ayrıştıran model.</p>
+          </div>
+        </li>
+        <li class="science-item">
+          <span class="sci-num">04</span>
+          <div>
+            <h5 data-i18n="s4_title">Çok Değişkenli Anomali Tespiti</h5>
+            <p data-i18n="s4_body">Motorumuz 7 biyometrik kaynağı eş zamanlı işleyerek tutarsızlıkları yakalar.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="science-aside">
+        <h4>Data Integrity Guard™</h4>
+        <p data-i18n="aside_p1">Her ölçümün güvenilirliğini değerlendiren doğrulama katmanı, sensör hatalarını otomatik olarak işaretler.</p>
+        <p data-i18n="aside_p2">Ar-Ge sürecimiz klinik ortaklarla birlikte yürütülmektedir.</p>
+        <div>
+          <span class="science-chip">ISO 27001</span>
+          <span class="science-chip">HL7 FHIR</span>
+          <span class="science-chip">AES-256</span>
+          <span class="science-chip">DSGVO</span>
+          <span class="science-chip">KVKK</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <div class="logo-icon" style="width:32px;height:32px;font-size:1.1rem">🧭</div>
+        <span class="logo-text">Gluco<span>Navigator</span></span>
+      </a>
+      <p data-i18n="footer_desc">Metabolik sağlığı herkes için anlaşılır kılmak amacıyla geliştirilen yapay zeka destekli glikoz navigasyon platformu.</p>
+      <p class="trademark">Marka Tescil No: <span style="color:rgba(255,255,255,.5);font-weight:600">4096543</span> &nbsp;·&nbsp; 16 Mart 2026</p>
+    </div>
+    <div>
+      <h5 data-i18n="footer_platform">Platform</h5>
+      <ul>
+        <li><a href="#teknoloji" data-i18n="nav_tech">Teknoloji</a></li>
+        <li><a href="#gizlilik" data-i18n="nav_privacy">Gizlilik</a></li>
+        <li><a href="#elite">Elite 3000</a></li>
+        <li><a href="#bilim" data-i18n="nav_science">Bilim</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 data-i18n="footer_legal">Yasal</h5>
+      <ul>
+        <li><a href="#" data-i18n="footer_privacy_link">Gizlilik Politikası</a></li>
+        <li><a href="#" data-i18n="footer_terms">Kullanım Koşulları</a></li>
+        <li><a href="#">KVKK</a></li>
+        <li><a href="#">DSGVO</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 data-i18n="footer_contact">İletişim</h5>
+      <ul>
+        <li><a href="/cdn-cgi/l/email-protection#147d7a727b54737861777b7a75627d7375607b663a7d7b"><span class="__cf_email__" data-cfemail="94fdfaf2fbd4f3f8e1f7fbfaf5e2fdf3f5e0fbe6bafdfb">[email&#160;protected]</span></a></li>
+        <li><a href="#">Berlin / Frankfurt</a></li>
+      </ul>
+      <div style="margin-top:1.5rem">
+        <div class="pacdi-badge">🌐 PACDI Ekosistemi</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer_copy">© 2026 GlucoNavigator · Tüm hakları saklıdır.</span>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center">
+      <a href="#">PusulaPro</a>
+      <a href="#">KompassPro</a>
+      <a href="#">EasyGov.io</a>
+      <a href="#">Karargah</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+const i18n = {
 tr: {
-nav_tech:“Teknoloji”, nav_privacy:“Gizlilik”, nav_elite:“Elite 3000”, nav_science:“Bilim”, nav_apply:“Başvur”,
-hero_badge:“BETA LANSMAN — ELİTE 3000 AÇIK”,
-hero_h1:“Glikoz Takibinin<br><em>Ötesine Geç.</em>”,
-hero_sub:“GlucoNavigator, yalnızca ölçüm yapmaz — yorumlar. Stres, uyku ve hareket verilerini birleştiren yapay zeka motoru, sizi rakamların arkasındaki gerçekle tanıştırır.”,
-hero_cta1:“Elite 3000’e Katıl”, hero_cta2:“Teknolojiyi Keşfet”,
-stat1:“Kurucu Üye Kontenjanı”, stat2:“Ömür Boyu Ücretsiz Erişim”, stat3:“GDPR ve KVKK Uyumlu”,
-tech_label:“Temel Teknoloji”, tech_title:“Software-as-a-Sensor™ Nedir?”,
-tech_body:“Donanımın sınırlarını aşmak için veriyi farklı okumak yeterlidir. GlucoNavigator, ham glikoz değerlerini çevresel ve biyometrik verilerle harmanlayarak size bütünsel bir metabolik tablo sunar.”,
-tc1_title:“Tahmine Dayalı Analitik”, tc1_body:“Geçmiş örüntülerinizi analiz eden motor, glikoz dalgalanmalarını gerçekleşmeden önce tespit eder ve sizi uyarır.”,
-tc2_title:“Stres Glikoz Korelasyonu”, tc2_body:“Kortizol yükü ile kan şekeri arasındaki ilişkiyi modelleyen algoritmamız, duygusal tetikleyicileri görünür kılar.”,
-tc3_title:“Data Integrity Guard”, tc3_body:“Verileriniz cihazınızdan çıkmadan işlenir; sunuculara gönderilmeden önce anonimleştirilir ve şifrelenir.”,
-tc4_title:“AR-GE Destekli Motor”, tc4_body:“Klinik ortaklarla yürütülen Ar-Ge çalışmaları algoritmanın doğruluğunu sürekli artırır.”,
-chart_badge:“Tahmin Aktif”,
-visual_title:“Gerçek Zamanlı Metabolik Harita”, visual_body:“Glikoz, nabız, stres ve uyku verileri tek bir akıllı grafikte birleşiyor.”,
-priv_label:“Anonimlik Kalkanı”, priv_title:“Veri Sahibi Hep Sizsiniz.”,
-priv_body:“Sağlık veriniz hassastır ve öyle kalmalıdır. GlucoNavigator GDPR-native mimarisi, verinizin sizi terk etmesini teknik olarak imkansız kılar.”,
-pc1_title:“GDPR ve KVKK Tam Uyum”, pc1_body:“Avrupa ve Türkiye gizlilik mevzuatına uygun veri işleme süreçleri.”,
-pc2_title:“Sıfır Tanımlayıcı İlkesi”, pc2_body:“İsim, kimlik, telefon hiçbir kişisel tanımlayıcı sunucularımıza ulaşmaz.”,
-pc3_title:“Yerelden İşleme”, pc3_body:“Hassas hesaplamalar cihazınızda gerçekleşir. Buluta yalnızca anonim veriler iletilir.”,
-elite_label:“Kurucu Topluluk”, elite_title:“Elite 3000: Hikayenin Ortak Yazarları.”,
-elite_body:“İlk 3.000 üye yalnızca kullanıcı değildir. GlucoNavigator dönüşüm hikayesini bizimle birlikte yazan Onursal Kuruculardır.”,
-perk1_title:“Ömür Boyu Ücretsiz”, perk1_body:“Premium özelliklere kalıcı, koşulsuz erişim.”,
-perk2_title:“Ürün Yol Haritası”, perk2_body:“Hangi özelliğin önce geliştirileceğini siz belirlersiniz.”,
-perk3_title:“Onursal Kurucu Rozeti”, perk3_body:“Profil ve uygulama içi kalıcı tanımlama.”,
-perk4_title:“Özel Erken Erişim”, perk4_body:“Tüm beta ve deneysel özellikler önce size açılır.”,
-counter_text:“kontenjan doldu”,
-apply_label:“Elite 3000 Başvurusu”, apply_title:“Onursal Kurucu Olarak Yerini Al.”,
-f_name:“Ad Soyad”, f_name_ph:“Adinizi girin”, f_email:“E-posta”, f_city:“Sehir”, f_city_ph:“Istanbul, Berlin”,
-f_country:“Ulke”, f_select:“Seciniz”, f_other_eu:“Diger AB ulkesi”, f_other:“Diger”,
-f_diabetes:“Diyabet Durumu”, f_t1:“Tip 1 Diyabet”, f_t2:“Tip 2 Diyabet”, f_pre:“Prediyabet veya Risk Grubu”,
-f_nodm:“Diyabet Yok - Metabolik Saglik Takibi”, f_notsay:“Belirtmek Istemiyorum”,
-f_freq:“Kan Sekeri Olcum Sikligi”, f_freq1:“Günde 1-2 kez parmak ucu”, f_freq2:“Günde 3-5 kez parmak ucu”,
-f_freq3:“Sensorlu olcum cihazi kullaniyorum”, f_freq4:“Henuz duzenli olcmuyorum”,
-cgm_title:“Sensorlu olcum cihazi nedir?”, cgm_body:“Parmaga batirmadan, cilde yapistirilan kucuk bir sensor araciligiyla kan sekerini surekli takip eden cihazdır.”,
-f_motivation:“Katilma nedeniniz”, f_optional:“istege bagli”, f_motivation_ph:“Beklentilerinizi paylaşabilirsiniz”,
-gdpr_text:“Gizlilik Politikasini okudum ve kabul ediyorum. GDPR ve KVKK uyumludur.”,
-submit_btn:“Elite 3000 Basvur - Ucretsiz”,
-sci_label:“Bilimsel Zemin”, sci_title:“Veriye Dayali, Insana Odakli.”,
-s1_title:“Postprandiyal Glikoz Modellemesi”, s1_body:“Yemek sonrasi glikoz tepkisini kisiye ozgu makro-besin profiliyle modelleyen makine ogrenmesi katmani.”,
-s2_title:“Sirkadiyen Ritim Entegrasyonu”, s2_body:“Uyku dongusu ve kortizol oruntuleri, insulin duyarliligi tahminlerine dahil edilir.”,
-s3_title:“Egzersiz Glikoz Dinamikleri”, s3_body:“Aerobik ve anaerobik aktivitelerin kisa ve uzun vadeli glikoz uzerindeki farkli etkilerini ayristiran model.”,
-s4_title:“Cok Degiskenli Anomali Tespiti”, s4_body:“Motorumuz 7 biyometrik kaynagi es zamanli isleyerek tutarsizliklari yakalar.”,
-aside_p1:“Her olcumun guvenilirligini degerlendiren dogrulama katmani, sensor hatalarini otomatik olarak isaretler.”,
-aside_p2:“Ar-Ge surecimiz klinik ortaklarla birlikte yurutulmektedir.”,
-footer_desc:“Metabolik sagligi herkes icin anlasilir kilmak amaciyla gelistirilen yapay zeka destekli glikoz navigasyon platformu.”,
-footer_platform:“Platform”, footer_legal:“Yasal”, footer_contact:“Iletisim”,
-footer_privacy_link:“Gizlilik Politikasi”, footer_terms:“Kullanim Kosullari”,
-footer_copy:“2026 GlucoNavigator - Tum haklari saklidir.”
+nav_tech:‘Teknoloji’, nav_privacy:‘Gizlilik’, nav_elite:‘Elite 3000’, nav_science:‘Bilim’, nav_apply:‘Başvur →’,
+hero_badge:‘BETA LANSMAN — ELİTE 3000 AÇIK’,
+hero_h1:‘Glikoz Takibinin<br><em>Ötesine Geç.</em>’,
+hero_sub:‘GlucoNavigator, yalnızca ölçüm yapmaz — yorumlar. Stres, uyku ve hareket verilerini birleştiren yapay zeka motoru, sizi rakamların arkasındaki gerçekle tanıştırır.’,
+hero_cta1:‘🎯 Elite 3000'e Katıl’, hero_cta2:‘Teknolojiyi Keşfet’,
+stat1:‘Kurucu Üye Kontenjanı’, stat2:‘Ömür Boyu Ücretsiz Erişim’, stat3:‘GDPR & KVKK Uyumlu’,
+tech_label:‘Temel Teknoloji’, tech_title:‘Software-as-a-Sensor™<br>Nedir?’,
+tech_body:‘Donanımın sınırlarını aşmak için veriyi farklı okumak yeterlidir. GlucoNavigator, ham glikoz değerlerini çevresel ve biyometrik verilerle harmanlayarak size bütünsel bir metabolik tablo sunar.’,
+tc1_title:‘Tahmine Dayalı Analitik’, tc1_body:‘Geçmiş örüntülerinizi analiz eden motor, glikoz dalgalanmalarını gerçekleşmeden önce tespit eder ve sizi uyarır.’,
+tc2_title:‘Stres–Glikoz Korelasyonu’, tc2_body:‘Kortizol yükü ile kan şekeri arasındaki ilişkiyi modelleyen algoritmamız, duygusal tetikleyicileri görünür kılar.’,
+tc3_title:‘Data Integrity Guard’, tc3_body:‘Verileriniz cihazınızdan çıkmadan işlenir; sunuculara gönderilmeden önce anonimleştirilir ve şifrelenir.’,
+tc4_title:‘AR-GE Destekli Motor’, tc4_body:‘Klinik ortaklarla yürütülen Ar-Ge çalışmaları algoritmanın doğruluğunu sürekli artırır.’,
+chart_badge:‘Tahmin Aktif’,
+visual_title:‘Gerçek Zamanlı<br>Metabolik Harita’, visual_body:‘Glikoz, nabız, stres ve uyku verileri tek bir akıllı grafikte birleşiyor.’,
+priv_label:‘Anonimlik Kalkanı’, priv_title:‘Veri Sahibi<br>Hep Sizsiniz.’,
+priv_body:‘Sağlık veriniz hassastır ve öyle kalmalıdır. GlucoNavigator'ın GDPR-native mimarisi, verinizin sizi terk etmesini teknik olarak imkânsız kılar.’,
+pc1_title:‘GDPR & KVKK Tam Uyum’, pc1_body:‘Avrupa ve Türkiye gizlilik mevzuatına uygun veri işleme süreçleri.’,
+pc2_title:‘Sıfır Tanımlayıcı İlkesi’, pc2_body:‘İsim, kimlik, telefon — hiçbir kişisel tanımlayıcı sunucularımıza ulaşmaz.’,
+pc3_title:‘Yerelden İşleme’, pc3_body:‘Hassas hesaplamalar cihazınızda gerçekleşir. Buluta yalnızca anonim veriler iletilir.’,
+elite_label:‘Kurucu Topluluk’, elite_title:‘Elite 3000:<br>Hikâyenin Ortak Yazarları.’,
+elite_body:‘İlk 3.000 üye yalnızca kullanıcı değildir — GlucoNavigator'ın dönüşüm hikâyesini bizimle birlikte yazan Onursal Kuruculardır.’,
+perk1_title:‘Ömür Boyu Ücretsiz’, perk1_body:‘Premium özelliklere kalıcı, koşulsuz erişim.’,
+perk2_title:‘Ürün Yol Haritası’, perk2_body:‘Hangi özelliğin önce geliştirileceğini siz belirlersiniz.’,
+perk3_title:‘Onursal Kurucu Rozeti’, perk3_body:‘Profil ve uygulama içi kalıcı tanımlama.’,
+perk4_title:‘Özel Erken Erişim’, perk4_body:‘Tüm beta ve deneysel özellikler önce size açılır.’,
+counter_text:‘kontenjan doldu’,
+apply_label:‘Elite 3000 Başvurusu’, apply_title:‘Onursal Kurucu Olarak Yerini Al.’,
+f_name:‘Ad Soyad’, f_name_ph:‘Adınızı girin’, f_email:‘E-posta’, f_city:‘Şehir’, f_city_ph:‘İstanbul, Berlin…’,
+f_country:‘Ülke’, f_select:‘Seçiniz…’, f_other_eu:‘Diğer AB ülkesi’, f_other:‘Diğer’,
+f_diabetes:‘Diyabet Durumu’, f_t1:‘Tip 1 Diyabet’, f_t2:‘Tip 2 Diyabet’, f_pre:‘Prediyabet / Risk Grubu’,
+f_nodm:‘Diyabet Yok — Metabolik Sağlık Takibi’, f_notsay:‘Belirtmek İstemiyorum’,
+f_freq:‘Kan Şekeri Ölçüm Sıklığı’, f_freq1:‘Günde 1–2 kez (parmak ucu)’, f_freq2:‘Günde 3–5 kez (parmak ucu)’,
+f_freq3:‘Sensörlü ölçüm cihazı kullanıyorum’, f_freq4:‘Henüz düzenli ölçmüyorum’,
+cgm_title:‘Sensörlü ölçüm cihazı nedir?’, cgm_body:’ Parmağa batırmadan, cilde yapıştırılan küçük bir sensör aracılığıyla kan şekerini sürekli takip eden cihazdır.’,
+f_motivation:‘Katılma nedeniniz’, f_optional:’(isteğe bağlı)’, f_motivation_ph:‘Beklentilerinizi paylaşabilirsiniz…’,
+gdpr_text:‘Gizlilik Politikası'nı okudum ve kabul ediyorum. GDPR & KVKK uyumludur.’,
+submit_btn:‘🎯 Elite 3000'e Başvur — Ücretsiz’,
+sci_label:‘Bilimsel Zemin’, sci_title:‘Veriye Dayalı,<br>İnsana Odaklı.’,
+s1_title:‘Postprandiyal Glikoz Modellemesi’, s1_body:‘Yemek sonrası glikoz tepkisini kişiye özgü makro-besin profiliyle modelleyen makine öğrenmesi katmanı.’,
+s2_title:‘Sirkadiyen Ritim Entegrasyonu’, s2_body:‘Uyku döngüsü ve kortizol örüntüleri, insülin duyarlılığı tahminlerine dahil edilir.’,
+s3_title:‘Egzersiz–Glikoz Dinamikleri’, s3_body:‘Aerobik ve anaerobik aktivitelerin kısa/uzun vadeli glikoz üzerindeki farklı etkilerini ayrıştıran model.’,
+s4_title:‘Çok Değişkenli Anomali Tespiti’, s4_body:‘Motorumuz 7 biyometrik kaynağı eş zamanlı işleyerek tutarsızlıkları yakalar.’,
+aside_p1:‘Her ölçümün güvenilirliğini değerlendiren doğrulama katmanı, sensör hatalarını otomatik olarak işaretler.’,
+aside_p2:‘Ar-Ge sürecimiz klinik ortaklarla birlikte yürütülmektedir.’,
+footer_desc:‘Metabolik sağlığı herkes için anlaşılır kılmak amacıyla geliştirilen yapay zeka destekli glikoz navigasyon platformu.’,
+footer_platform:‘Platform’, footer_legal:‘Yasal’, footer_contact:‘İletişim’,
+footer_privacy_link:‘Gizlilik Politikası’, footer_terms:‘Kullanım Koşulları’,
+footer_copy:‘© 2026 GlucoNavigator · Tüm hakları saklıdır.’,
 },
 de: {
-nav_tech:“Technologie”, nav_privacy:“Datenschutz”, nav_elite:“Elite 3000”, nav_science:“Wissenschaft”, nav_apply:“Bewerben”,
-hero_badge:“BETA-LAUNCH — ELITE 3000 OFFEN”,
-hero_h1:“Glukose-Tracking<br><em>neu gedacht.</em>”,
-hero_sub:“GlucoNavigator misst nicht nur — er interpretiert. Die KI-Engine verbindet Stress-, Schlaf- und Bewegungsdaten und zeigt Ihnen die Wahrheit hinter den Zahlen.”,
-hero_cta1:“Elite 3000 beitreten”, hero_cta2:“Technologie entdecken”,
-stat1:“Gruender-Mitglieder”, stat2:“Lebenslang kostenlos”, stat3:“DSGVO und KVKK konform”,
-tech_label:“Kerntechnologie”, tech_title:“Was ist Software-as-a-Sensor?”,
-tech_body:“Um die Grenzen der Hardware zu ueberwinden, reicht es aus, Daten anders zu lesen. GlucoNavigator kombiniert rohe Glukosewerte mit Umwelt- und biometrischen Daten.”,
-tc1_title:“Praediktive Analytik”, tc1_body:“Der Motor analysiert vergangene Muster und erkennt Glukoseschwankungen, bevor sie auftreten.”,
-tc2_title:“Stress Glukose Korrelation”, tc2_body:“Unser Algorithmus macht emotionale Ausloser sichtbar.”,
-tc3_title:“Data Integrity Guard”, tc3_body:“Ihre Daten werden verarbeitet, ohne das Geraet zu verlassen.”,
-tc4_title:“F&E Motor”, tc4_body:“F&E-Arbeiten mit klinischen Partnern verbessern kontinuierlich die Genauigkeit.”,
-chart_badge:“Prognose aktiv”,
-visual_title:“Echtzeit Stoffwechselkarte”, visual_body:“Glukose, Puls, Stress und Schlaf in einer intelligenten Grafik.”,
-priv_label:“Anonymitaetsschild”, priv_title:“Sie bleiben Eigentuemer Ihrer Daten.”,
-priv_body:“Ihre Gesundheitsdaten sind sensibel. Die DSGVO-native Architektur schuetzt sie vollstaendig.”,
-pc1_title:“DSGVO und KVKK konform”, pc1_body:“Datenschutzkonforme Verarbeitung nach europaeischem und tuerkischem Recht.”,
-pc2_title:“Zero-ID-Prinzip”, pc2_body:“Kein persoenlicher Identifier erreicht unsere Server.”,
-pc3_title:“On-Device-Verarbeitung”, pc3_body:“Sensible Berechnungen finden auf Ihrem Geraet statt.”,
-elite_label:“Gruender-Community”, elite_title:“Elite 3000: Mitautoren der Geschichte.”,
-elite_body:“Die ersten 3.000 Mitglieder sind Ehrengründer, die GlucoNavigators Erfolgsgeschichte mitschreiben.”,
-perk1_title:“Lebenslang kostenlos”, perk1_body:“Dauerhafter Zugang zu Premium-Funktionen.”,
-perk2_title:“Produkt-Roadmap”, perk2_body:“Sie bestimmen, welche Funktionen zuerst entwickelt werden.”,
-perk3_title:“Ehrengründer-Abzeichen”, perk3_body:“Dauerhafte Kennzeichnung im Profil.”,
-perk4_title:“Exklusiver Frueh-Zugang”, perk4_body:“Alle Beta-Funktionen zuerst fuer Sie.”,
-counter_text:“Plaetze vergeben”,
-apply_label:“Elite 3000 Bewerbung”, apply_title:“Werden Sie Ehrengründer.”,
-f_name:“Vor- und Nachname”, f_name_ph:“Ihren Namen eingeben”, f_email:“E-Mail”, f_city:“Stadt”, f_city_ph:“Berlin, Istanbul”,
-f_country:“Land”, f_select:“Auswaehlen”, f_other_eu:“Anderes EU-Land”, f_other:“Sonstiges”,
-f_diabetes:“Diabetes-Status”, f_t1:“Typ-1-Diabetes”, f_t2:“Typ-2-Diabetes”, f_pre:“Praediabetes”,
-f_nodm:“Kein Diabetes - Stoffwechsel-Monitoring”, f_notsay:“Keine Angabe”,
-f_freq:“Blutzucker-Messfrequenz”, f_freq1:“1-2x taeglich Fingerstich”, f_freq2:“3-5x taeglich Fingerstich”,
-f_freq3:“Ich nutze ein CGM-Geraet”, f_freq4:“Noch keine regelmaessige Messung”,
-cgm_title:“Was ist ein CGM-Geraet?”, cgm_body:“Ein kleiner Sensor misst den Blutzucker kontinuierlich ohne Fingerstich.”,
-f_motivation:“Ihre Motivation”, f_optional:“optional”, f_motivation_ph:“Teilen Sie Ihre Erwartungen”,
-gdpr_text:“Ich habe die Datenschutzerklaerung gelesen und stimme zu. DSGVO-konform.”,
-submit_btn:“Fuer Elite 3000 bewerben - Kostenlos”,
-sci_label:“Wissenschaftliche Grundlage”, sci_title:“Datengestuetzt, menschenzentriert.”,
-s1_title:“Postprandiale Glukosemodellierung”, s1_body:“ML-Schicht modelliert die Glukoseantwort nach dem Essen.”,
-s2_title:“Circadianer Rhythmus”, s2_body:“Schlafzyklen und Cortisol-Muster in Insulinsensitivitaets-Prognosen.”,
-s3_title:“Sport Glukose-Dynamik”, s3_body:“Auswirkungen aerober und anaerober Aktivitaeten auf Glukose.”,
-s4_title:“Multivariate Anomalie-Erkennung”, s4_body:“7 biometrische Quellen gleichzeitig verarbeitet.”,
-aside_p1:“Die Validierungsschicht markiert Sensorfehler automatisch.”,
-aside_p2:“Unsere F&E laeuft mit klinischen Partnern.”,
-footer_desc:“KI-gestuetzte Glukose-Navigationsplattform fuer ein bewussteres Leben mit Diabetes.”,
-footer_platform:“Plattform”, footer_legal:“Rechtliches”, footer_contact:“Kontakt”,
-footer_privacy_link:“Datenschutzerklaerung”, footer_terms:“Nutzungsbedingungen”,
-footer_copy:“2026 GlucoNavigator - Alle Rechte vorbehalten.”
+nav_tech:‘Technologie’, nav_privacy:‘Datenschutz’, nav_elite:‘Elite 3000’, nav_science:‘Wissenschaft’, nav_apply:‘Bewerben →’,
+hero_badge:‘BETA-LAUNCH — ELITE 3000 OFFEN’,
+hero_h1:‘Glukose-Tracking<br><em>neu gedacht.</em>’,
+hero_sub:‘GlucoNavigator misst nicht nur — er interpretiert. Die KI-Engine verbindet Stress-, Schlaf- und Bewegungsdaten und zeigt Ihnen die Wahrheit hinter den Zahlen.’,
+hero_cta1:‘🎯 Elite 3000 beitreten’, hero_cta2:‘Technologie entdecken’,
+stat1:‘Gründer-Mitglieder’, stat2:‘Lebenslang kostenlos’, stat3:‘DSGVO & KVKK konform’,
+tech_label:‘Kerntechnologie’, tech_title:‘Was ist Software-as-a-Sensor™?’,
+tech_body:‘Um die Grenzen der Hardware zu überwinden, reicht es aus, Daten anders zu lesen. GlucoNavigator kombiniert rohe Glukosewerte mit Umwelt- und biometrischen Daten.’,
+tc1_title:‘Prädiktive Analytik’, tc1_body:‘Der Motor analysiert vergangene Muster und erkennt Glukoseschwankungen, bevor sie auftreten.’,
+tc2_title:‘Stress–Glukose-Korrelation’, tc2_body:‘Unser Algorithmus macht emotionale Auslöser sichtbar und modelliert den Zusammenhang zwischen Cortisolbelastung und Blutzucker.’,
+tc3_title:‘Data Integrity Guard’, tc3_body:‘Ihre Daten werden verarbeitet, ohne das Gerät zu verlassen; vor der Übertragung anonymisiert und verschlüsselt.’,
+tc4_title:‘F&E-gestützter Motor’, tc4_body:‘F&E-Arbeiten mit klinischen Partnern verbessern kontinuierlich die Genauigkeit des Algorithmus.’,
+chart_badge:‘Prognose aktiv’,
+visual_title:‘Echtzeit-<br>Stoffwechselkarte’, visual_body:‘Glukose, Puls, Stress und Schlaf vereint in einer intelligenten Grafik.’,
+priv_label:‘Anonymitätsschild’, priv_title:‘Sie bleiben<br>Dateneigentümer.’,
+priv_body:‘Ihre Gesundheitsdaten sind sensibel und sollen es bleiben. Die DSGVO-native Architektur macht es technisch unmöglich, dass Ihre Daten Sie verlassen.’,
+pc1_title:‘DSGVO & KVKK konform’, pc1_body:‘Datenschutzkonforme Verarbeitung nach europäischem und türkischem Recht.’,
+pc2_title:‘Zero-ID-Prinzip’, pc2_body:‘Name, ID, Telefon — kein persönlicher Identifier erreicht unsere Server.’,
+pc3_title:‘On-Device-Verarbeitung’, pc3_body:‘Sensible Berechnungen finden auf Ihrem Gerät statt. Nur anonyme Daten in die Cloud.’,
+elite_label:‘Gründer-Community’, elite_title:‘Elite 3000:<br>Mitautoren der Geschichte.’,
+elite_body:‘Die ersten 3.000 Mitglieder sind nicht nur Nutzer — sie sind Ehrengründer, die GlucoNavigators Erfolgsgeschichte mitschreiben.’,
+perk1_title:‘Lebenslang kostenlos’, perk1_body:‘Dauerhafter, bedingungsloser Zugang zu Premium-Funktionen.’,
+perk2_title:‘Produkt-Roadmap’, perk2_body:‘Sie bestimmen, welche Funktionen zuerst entwickelt werden.’,
+perk3_title:‘Ehrengründer-Abzeichen’, perk3_body:‘Dauerhafte Kennzeichnung im Profil und in der App.’,
+perk4_title:‘Exklusiver Früh-Zugang’, perk4_body:‘Alle Beta- und experimentellen Funktionen zuerst für Sie.’,
+counter_text:‘Plätze vergeben’,
+apply_label:‘Elite 3000 Bewerbung’, apply_title:‘Werden Sie Ehrengründer.’,
+f_name:‘Vor- und Nachname’, f_name_ph:‘Ihren Namen eingeben’, f_email:‘E-Mail-Adresse’, f_city:‘Stadt’, f_city_ph:‘Berlin, Istanbul…’,
+f_country:‘Land’, f_select:‘Auswählen…’, f_other_eu:‘Anderes EU-Land’, f_other:‘Sonstiges’,
+f_diabetes:‘Diabetes-Status’, f_t1:‘Typ-1-Diabetes’, f_t2:‘Typ-2-Diabetes’, f_pre:‘Prädiabetes / Risikogruppe’,
+f_nodm:‘Kein Diabetes — Stoffwechsel-Monitoring’, f_notsay:‘Keine Angabe’,
+f_freq:‘Blutzucker-Messfrequenz’, f_freq1:‘1–2x täglich (Fingerstich)’, f_freq2:‘3–5x täglich (Fingerstich)’,
+f_freq3:‘Ich nutze ein CGM-Gerät’, f_freq4:‘Noch keine regelmäßige Messung’,
+cgm_title:‘Was ist ein CGM-Gerät?’, cgm_body:’ Ein kleiner Sensor an der Haut misst den Blutzucker kontinuierlich ohne Fingerstich.’,
+f_motivation:‘Ihre Motivation’, f_optional:’(optional)’, f_motivation_ph:‘Teilen Sie Ihre Erwartungen…’,
+gdpr_text:‘Ich habe die Datenschutzerklärung gelesen und stimme zu. DSGVO-konform.’,
+submit_btn:‘🎯 Für Elite 3000 bewerben — Kostenlos’,
+sci_label:‘Wissenschaftliche Grundlage’, sci_title:‘Datengestützt,<br>menschenzentriert.’,
+s1_title:‘Postprandiale Glukosemodellierung’, s1_body:‘ML-Schicht, die die postprandiale Glukoseantwort mit dem individuellen Makronährstoffprofil modelliert.’,
+s2_title:‘Circadianer Rhythmus’, s2_body:‘Schlafzyklen und Cortisol-Muster fließen in Insulinsensitivitäts-Prognosen ein.’,
+s3_title:‘Sport–Glukose-Dynamik’, s3_body:‘Modell, das die unterschiedlichen kurz- und langfristigen Auswirkungen aerober und anaerober Aktivitäten auf Glukose trennt.’,
+s4_title:‘Multivariate Anomalie-Erkennung’, s4_body:‘Unser Motor verarbeitet 7 biometrische Quellen gleichzeitig und erkennt Inkonsistenzen.’,
+aside_p1:‘Die Validierungsschicht bewertet die Zuverlässigkeit jeder Messung und markiert Sensorfehler automatisch.’,
+aside_p2:‘Unsere F&E läuft mit klinischen Partnern; Modell-Updates durchlaufen regelmäßige Validierungszyklen.’,
+footer_desc:‘KI-gestützte Glukose-Navigationsplattform für ein bewussteres Leben mit Diabetes.’,
+footer_platform:‘Plattform’, footer_legal:‘Rechtliches’, footer_contact:‘Kontakt’,
+footer_privacy_link:‘Datenschutzerklärung’, footer_terms:‘Nutzungsbedingungen’,
+footer_copy:‘© 2026 GlucoNavigator · Alle Rechte vorbehalten.’,
 },
 en: {
-nav_tech:“Technology”, nav_privacy:“Privacy”, nav_elite:“Elite 3000”, nav_science:“Science”, nav_apply:“Apply”,
-hero_badge:“BETA LAUNCH — ELITE 3000 OPEN”,
-hero_h1:“Go Beyond<br><em>Glucose Tracking.</em>”,
-hero_sub:“GlucoNavigator does not just measure — it interprets. Our AI engine combines stress, sleep and movement data to reveal the truth behind the numbers.”,
-hero_cta1:“Join Elite 3000”, hero_cta2:“Explore Technology”,
-stat1:“Founding Member Slots”, stat2:“Lifetime Free Access”, stat3:“GDPR and KVKK Compliant”,
-tech_label:“Core Technology”, tech_title:“What is Software-as-a-Sensor?”,
-tech_body:“To go beyond hardware limits, all it takes is reading data differently. GlucoNavigator combines raw glucose values with environmental and biometric data.”,
-tc1_title:“Predictive Analytics”, tc1_body:“The engine analyzes past patterns to detect glucose fluctuations before they happen.”,
-tc2_title:“Stress Glucose Correlation”, tc2_body:“Our algorithm models the relationship between cortisol load and blood sugar.”,
-tc3_title:“Data Integrity Guard”, tc3_body:“Your data is processed without leaving your device.”,
-tc4_title:“R&D Engine”, tc4_body:“R&D work with clinical partners continuously improves algorithm accuracy.”,
-chart_badge:“Prediction Active”,
-visual_title:“Real-Time Metabolic Map”, visual_body:“Glucose, pulse, stress and sleep in one intelligent graph.”,
-priv_label:“Anonymity Shield”, priv_title:“You Always Own Your Data.”,
-priv_body:“Your health data is sensitive. GlucoNavigator GDPR-native architecture makes it technically impossible for your data to leave you.”,
-pc1_title:“Full GDPR and KVKK Compliance”, pc1_body:“Data processing compliant with European and Turkish privacy law.”,
-pc2_title:“Zero-ID Principle”, pc2_body:“No personal identifier ever reaches our servers.”,
-pc3_title:“On-Device Processing”, pc3_body:“Sensitive computations happen on your device.”,
-elite_label:“Founding Community”, elite_title:“Elite 3000: Co-Authors of the Story.”,
-elite_body:“The first 3000 members are Honorary Founders writing GlucoNavigator’s transformation story with us.”,
-perk1_title:“Lifetime Free”, perk1_body:“Permanent access to premium features.”,
-perk2_title:“Product Roadmap”, perk2_body:“You decide which features get built first.”,
-perk3_title:“Honorary Founder Badge”, perk3_body:“Permanent recognition in your profile.”,
-perk4_title:“Exclusive Early Access”, perk4_body:“All beta features open to you first.”,
-counter_text:“slots filled”,
-apply_label:“Elite 3000 Application”, apply_title:“Claim Your Place as Honorary Founder.”,
-f_name:“Full Name”, f_name_ph:“Enter your name”, f_email:“Email”, f_city:“City”, f_city_ph:“Berlin, Istanbul”,
-f_country:“Country”, f_select:“Select”, f_other_eu:“Other EU country”, f_other:“Other”,
-f_diabetes:“Diabetes Status”, f_t1:“Type 1 Diabetes”, f_t2:“Type 2 Diabetes”, f_pre:“Prediabetes”,
-f_nodm:“No Diabetes - Metabolic Health Tracking”, f_notsay:“Prefer not to say”,
-f_freq:“Blood Sugar Measurement Frequency”, f_freq1:“1-2x daily finger prick”, f_freq2:“3-5x daily finger prick”,
-f_freq3:“I use a CGM device”, f_freq4:“Not measuring regularly yet”,
-cgm_title:“What is a CGM device?”, cgm_body:“A small sensor attached to the skin monitors blood sugar continuously.”,
-f_motivation:“Your motivation”, f_optional:“optional”, f_motivation_ph:“Share your expectations”,
-gdpr_text:“I have read and agree to the Privacy Policy. GDPR compliant.”,
-submit_btn:“Apply for Elite 3000 - Free”,
-sci_label:“Scientific Foundation”, sci_title:“Data-Driven, Human-Centered.”,
-s1_title:“Postprandial Glucose Modeling”, s1_body:“ML layer modeling post-meal glucose response.”,
-s2_title:“Circadian Rhythm Integration”, s2_body:“Sleep cycles and cortisol patterns in insulin sensitivity predictions.”,
-s3_title:“Exercise Glucose Dynamics”, s3_body:“Effects of aerobic and anaerobic activities on glucose.”,
-s4_title:“Multivariate Anomaly Detection”, s4_body:“7 biometric sources processed simultaneously.”,
-aside_p1:“The validation layer automatically flags sensor errors.”,
-aside_p2:“Our R&D runs with clinical partners.”,
-footer_desc:“AI-powered glucose navigation platform for conscious diabetes management.”,
-footer_platform:“Platform”, footer_legal:“Legal”, footer_contact:“Contact”,
-footer_privacy_link:“Privacy Policy”, footer_terms:“Terms of Use”,
-footer_copy:“2026 GlucoNavigator - All rights reserved.”
+nav_tech:‘Technology’, nav_privacy:‘Privacy’, nav_elite:‘Elite 3000’, nav_science:‘Science’, nav_apply:‘Apply →’,
+hero_badge:‘BETA LAUNCH — ELITE 3000 OPEN’,
+hero_h1:‘Go Beyond<br><em>Glucose Tracking.</em>’,
+hero_sub:‘GlucoNavigator doesn't just measure — it interprets. Our AI engine combines stress, sleep and movement data to reveal the truth behind the numbers.’,
+hero_cta1:‘🎯 Join Elite 3000’, hero_cta2:‘Explore Technology’,
+stat1:‘Founding Member Slots’, stat2:‘Lifetime Free Access’, stat3:‘GDPR & KVKK Compliant’,
+tech_label:‘Core Technology’, tech_title:‘What is Software-as-a-Sensor™?’,
+tech_body:‘To go beyond hardware limits, all it takes is reading data differently. GlucoNavigator combines raw glucose values with environmental and biometric data for a holistic metabolic picture.’,
+tc1_title:‘Predictive Analytics’, tc1_body:‘The engine analyzes past patterns to detect glucose fluctuations before they happen and alerts you.’,
+tc2_title:‘Stress–Glucose Correlation’, tc2_body:‘Our algorithm models the relationship between cortisol load and blood sugar, making emotional triggers visible.’,
+tc3_title:‘Data Integrity Guard’, tc3_body:‘Your data is processed without leaving your device; anonymized and encrypted before any transmission.’,
+tc4_title:‘R&D-Powered Engine’, tc4_body:‘R&D work with clinical partners continuously improves algorithm accuracy.’,
+chart_badge:‘Prediction Active’,
+visual_title:‘Real-Time<br>Metabolic Map’, visual_body:‘Glucose, pulse, stress and sleep united in one intelligent graph.’,
+priv_label:‘Anonymity Shield’, priv_title:‘You Always Own<br>Your Data.’,
+priv_body:‘Your health data is sensitive and should remain so. GlucoNavigator's GDPR-native architecture makes it technically impossible for your data to leave you.’,
+pc1_title:‘Full GDPR & KVKK Compliance’, pc1_body:‘Data processing compliant with European and Turkish privacy law.’,
+pc2_title:‘Zero-ID Principle’, pc2_body:‘Name, ID, phone — no personal identifier ever reaches our servers.’,
+pc3_title:‘On-Device Processing’, pc3_body:‘Sensitive computations happen on your device. Only anonymous encrypted data goes to the cloud.’,
+elite_label:‘Founding Community’, elite_title:‘Elite 3000:<br>Co-Authors of the Story.’,
+elite_body:‘The first 3,000 members are not just users — they are Honorary Founders writing GlucoNavigator's transformation story with us.’,
+perk1_title:‘Lifetime Free’, perk1_body:‘Permanent, unconditional access to premium features.’,
+perk2_title:‘Product Roadmap’, perk2_body:‘You decide which features get built first.’,
+perk3_title:‘Honorary Founder Badge’, perk3_body:‘Permanent recognition in your profile and in-app.’,
+perk4_title:‘Exclusive Early Access’, perk4_body:‘All beta and experimental features open to you first.’,
+counter_text:‘slots filled’,
+apply_label:‘Elite 3000 Application’, apply_title:‘Claim Your Place as Honorary Founder.’,
+f_name:‘Full Name’, f_name_ph:‘Enter your name’, f_email:‘Email Address’, f_city:‘City’, f_city_ph:‘Berlin, Istanbul…’,
+f_country:‘Country’, f_select:‘Select…’, f_other_eu:‘Other EU country’, f_other:‘Other’,
+f_diabetes:‘Diabetes Status’, f_t1:‘Type 1 Diabetes’, f_t2:‘Type 2 Diabetes’, f_pre:‘Prediabetes / At Risk’,
+f_nodm:‘No Diabetes — Metabolic Health Tracking’, f_notsay:‘Prefer not to say’,
+f_freq:‘Blood Sugar Measurement Frequency’, f_freq1:‘1–2x daily (finger prick)’, f_freq2:‘3–5x daily (finger prick)’,
+f_freq3:‘I use a CGM device’, f_freq4:‘Not measuring regularly yet’,
+cgm_title:‘What is a CGM device?’, cgm_body:’ A small sensor attached to the skin that continuously monitors blood sugar without finger pricks.’,
+f_motivation:‘Your motivation’, f_optional:’(optional)’, f_motivation_ph:‘Share your expectations or story…’,
+gdpr_text:‘I have read and agree to the Privacy Policy. GDPR compliant.’,
+submit_btn:‘🎯 Apply for Elite 3000 — Free’,
+sci_label:‘Scientific Foundation’, sci_title:‘Data-Driven,<br>Human-Centered.’,
+s1_title:‘Postprandial Glucose Modeling’, s1_body:‘ML layer modeling post-meal glucose response with individual macronutrient profiles.’,
+s2_title:‘Circadian Rhythm Integration’, s2_body:‘Sleep cycles and cortisol patterns are incorporated into insulin sensitivity predictions.’,
+s3_title:‘Exercise–Glucose Dynamics’, s3_body:‘Model distinguishing short and long-term effects of aerobic vs anaerobic activities on glucose.’,
+s4_title:‘Multivariate Anomaly Detection’, s4_body:‘Our engine processes 7 biometric sources simultaneously to catch inconsistencies.’,
+aside_p1:‘The validation layer assesses the reliability of each measurement and automatically flags sensor errors.’,
+aside_p2:‘Our R&D runs with clinical partners; model updates go through regular validation cycles.’,
+footer_desc:‘AI-powered glucose navigation platform for conscious diabetes management.’,
+footer_platform:‘Platform’, footer_legal:‘Legal’, footer_contact:‘Contact’,
+footer_privacy_link:‘Privacy Policy’, footer_terms:‘Terms of Use’,
+footer_copy:‘© 2026 GlucoNavigator · All rights reserved.’,
 }
 };
 
 function setLang(lang) {
-var t = i18n[lang];
-if (!t) return;
-var els = document.querySelectorAll(”[data-i18n]”);
-for (var i = 0; i < els.length; i++) {
-var key = els[i].getAttribute(“data-i18n”);
-if (t[key]) els[i].innerHTML = t[key];
-}
-var phs = document.querySelectorAll(”[data-i18n-ph]”);
-for (var j = 0; j < phs.length; j++) {
-var pkey = phs[j].getAttribute(“data-i18n-ph”);
-if (t[pkey]) phs[j].placeholder = t[pkey];
-}
-var btns = document.querySelectorAll(”.lang-switch button”);
-for (var k = 0; k < btns.length; k++) btns[k].classList.remove(“active”);
-var ab = document.getElementById(“btn-” + lang);
-if (ab) ab.classList.add(“active”);
+const t = i18n[lang];
+document.querySelectorAll(’[data-i18n]’).forEach(el => {
+const key = el.getAttribute(‘data-i18n’);
+if (t[key] !== undefined) el.innerHTML = t[key];
+});
+document.querySelectorAll(’[data-i18n-ph]’).forEach(el => {
+const key = el.getAttribute(‘data-i18n-ph’);
+if (t[key] !== undefined) el.placeholder = t[key];
+});
+document.querySelectorAll(’.lang-switch button’).forEach(b => b.classList.remove(‘active’));
+document.getElementById(‘btn-’ + lang).classList.add(‘active’);
 document.documentElement.lang = lang;
 }
 
 function checkCGM(sel) {
-var box = document.getElementById(“cgm-info”);
-if (sel.value === “cgm”) {
-box.classList.add(“visible”);
-} else {
-box.classList.remove(“visible”);
-}
+document.getElementById(‘cgm-info’).classList.toggle(‘visible’, sel.value === ‘cgm’);
 }
 
-function submitForm() {
-var name = document.getElementById(“f-name”).value.trim();
-var email = document.getElementById(“f-email”).value.trim();
-var country = document.getElementById(“f-country”).value;
-var type = document.getElementById(“f-type”).value;
-var freq = document.getElementById(“f-freq”).value;
-var gdpr = document.getElementById(“f-gdpr”).checked;
-var msg = document.getElementById(“form-msg”);
-var btn = document.querySelector(”.form-submit”);
-
+async function submitForm() {
+const name  = document.getElementById(‘f-name’).value.trim();
+const email = document.getElementById(‘f-email’).value.trim();
+const country = document.getElementById(‘f-country’).value;
+const type  = document.getElementById(‘f-type’).value;
+const freq  = document.getElementById(‘f-freq’).value;
+const gdpr  = document.getElementById(‘f-gdpr’).checked;
+const msg   = document.getElementById(‘form-msg’);
+const btn   = document.querySelector(’.form-submit’);
 if (!name || !email || !country || !type || !freq) {
-msg.style.color = “#e67e22”;
-msg.textContent = “Lutfen zorunlu alanlari doldurun.”;
+msg.style.color = ‘#e67e22’;
+msg.textContent = ‘⚠️ Lütfen zorunlu alanları doldurun.’;
 return;
 }
 if (!gdpr) {
-msg.style.color = “#e67e22”;
-msg.textContent = “Gizlilik politikasini onaylayin.”;
+msg.style.color = ‘#e67e22’;
+msg.textContent = ‘⚠️ Gizlilik politikasını onaylayın.’;
 return;
 }
-btn.textContent = “Gonderiliyor…”;
+btn.textContent = ‘⏳…’;
 btn.disabled = true;
-
-var data = {
-name: name,
-email: email,
-city: document.getElementById(“f-city”).value.trim(),
-country: country,
-diyabet_tipi: type,
-olcum_sikligi: freq,
-motivasyon: document.getElementById(“f-motivation”).value.trim(),
-kaynak: “GlucoNavigator Elite 3000”
-};
-
-fetch(“https://formspree.io/f/xbdzpdwp”, {
-method: “POST”,
-headers: { “Content-Type”: “application/json”, “Accept”: “application/json” },
-body: JSON.stringify(data)
-}).then(function(res) {
+try {
+const res = await fetch(‘https://formspree.io/f/xbdzpdwp’, {
+method: ‘POST’,
+headers: { ‘Content-Type’: ‘application/json’, ‘Accept’: ‘application/json’ },
+body: JSON.stringify({ name, email,
+city: document.getElementById(‘f-city’).value.trim(),
+country, diyabet_tipi: type, olcum_sikligi: freq,
+motivasyon: document.getElementById(‘f-motivation’).value.trim(),
+kaynak: ‘GlucoNavigator Elite 3000’ })
+});
 if (res.ok) {
-btn.textContent = “Basvurunuz alindi!”;
-btn.style.background = “#27ae60”;
-msg.style.color = “#6B7A8D”;
-msg.textContent = “En kisa surede bilgilendirme e-postasi gonderilecektir.”;
+btn.textContent = ‘✅ Başvurunuz alındı!’;
+btn.style.background = ‘#27ae60’;
 } else {
-btn.textContent = “Elite 3000 Basvur”;
+btn.textContent = ‘🎯 Elite 3000'e Başvur — Ücretsiz’;
 btn.disabled = false;
-msg.style.color = “#e67e22”;
-msg.textContent = “Hata olustu, tekrar deneyin.”;
+msg.style.color = ‘#e67e22’;
+msg.textContent = ‘⚠️ Hata oluştu, tekrar deneyin.’;
 }
-}).catch(function() {
-btn.textContent = “Elite 3000 Basvur”;
+} catch {
+btn.textContent = ‘🎯 Elite 3000'e Başvur — Ücretsiz’;
 btn.disabled = false;
-msg.style.color = “#e67e22”;
-msg.textContent = “Baglanti hatasi.”;
-});
-}
-
-window.addEventListener(“load”, function() {
-setLang(“tr”);
-setTimeout(function() {
-var fill = document.getElementById(“fill”);
-if (fill) fill.style.width = “18%”;
-}, 500);
-});
+msg.style.color = ‘#e67e22’;
+msg.textContent
