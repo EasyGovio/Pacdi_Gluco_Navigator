@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no, address=no, email=no">
 <title>GlucoNavigator — Beyond Sensing, Into Living</title>
+<!-- OG META TAGS (ADDED) -->
+<meta property="og:title" content="GlucoNavigatör | Beyond Sensing, Into Living">
+<meta property="og:description" content="Yapay zeka destekli glükoz navigasyon platformu. Elite 3000 kurucu üyelik açık.">
+<meta property="og:image" content="https://gluconavigator.io/og-image.jpg">
+<meta property="og:url" content="https://gluconavigator.io">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gluconavigator.io/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -385,6 +392,52 @@ font-size: .8rem; color: rgba(255,255,255,.5);
 }
 .counter-text strong { color: var(–teal); }
 
+/* ── STATS GRID (for new numbers) ── */
+.stats-number-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.8rem;
+  margin: 2rem 0;
+}
+.stats-number-grid .stat {
+  text-align: center;
+  background: var(–teal-pale);
+  padding: 1.2rem 0.5rem;
+  border-radius: 24px;
+  border: 1px solid rgba(42,195,183,.2);
+}
+.stats-number-grid .stat-num {
+  font-size: 1.8rem;
+  color: var(–teal);
+  font-weight: 700;
+}
+.stats-number-grid .stat-label {
+  font-size: 0.75rem;
+  color: var(–navy);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.3rem;
+}
+.source-note {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(–muted);
+  margin-top: 1.5rem;
+}
+
+/* ── CROSS-LINKS (elite style override) ── */
+.crosslinks .elite-perks a {
+  text-decoration: none;
+  display: block;
+  transition: transform 0.2s;
+}
+.crosslinks .elite-perks a:hover {
+  transform: translateY(-2px);
+}
+.crosslinks .perk {
+  cursor: pointer;
+}
+
 /* ── APPLY ── */
 .apply { background: var(–grey-bg); }
 .apply-wrap {
@@ -547,6 +600,9 @@ nav { display: none; }
       <a href="#gizlilik" data-i18n="nav_privacy">Gizlilik</a>
       <a href="#elite" data-i18n="nav_elite">Elite 3000</a>
       <a href="#bilim" data-i18n="nav_science">Bilim</a>
+      <!-- NEW NAV LINKS -->
+      <a href="#istatistik" data-i18n="nav_stats">İstatistikler</a>
+      <a href="#ekosistem" data-i18n="nav_eco">Ekosistem</a>
       <a href="#basvuru" class="nav-cta" data-i18n="nav_apply">Başvur →</a>
     </nav>
     <div class="lang-switch">
@@ -572,6 +628,8 @@ nav { display: none; }
     <div class="hero-actions">
       <a href="#basvuru" class="btn-primary" data-i18n="hero_cta1">🎯 Elite 3000'e Katıl</a>
       <a href="#teknoloji" class="btn-outline" data-i18n="hero_cta2">Teknolojiyi Keşfet</a>
+      <!-- SHARE BUTTON ADDED -->
+      <button onclick="shareGluco()" class="btn-outline" data-i18n="hero_share">📤 Paylaş</button>
     </div>
     <div class="hero-stats">
       <div class="stat">
@@ -713,6 +771,71 @@ nav { display: none; }
     <div class="elite-counter">
       <div class="counter-bar"><div class="counter-fill" id="fill"></div></div>
       <span class="counter-text"><strong>540</strong> / 3.000 <span data-i18n="counter_text">kontenjan doldu</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= STATISTICS SECTION (NEW) ======================= -->
+<section class="privacy" id="istatistik">
+  <div class="container">
+    <p class="section-label" data-i18n="stats_label">Küresel Tablo</p>
+    <h2 class="section-title" data-i18n="stats_title">Diyabet: Rakamların<br>Arkasındaki Gerçek.</h2>
+    <div class="stats-number-grid">
+      <div class="stat"><span class="stat-num">589 Milyon</span><span class="stat-label" data-i18n="stat_card1">Dünya geneli diyabet hastası (2024)</span></div>
+      <div class="stat"><span class="stat-num">9 Milyon</span><span class="stat-label" data-i18n="stat_card2">Almanya'da diyabet hastası</span></div>
+      <div class="stat"><span class="stat-num">10.5 Milyon</span><span class="stat-label" data-i18n="stat_card3">Türkiye'de diyabet hastası</span></div>
+      <div class="stat"><span class="stat-num">%42.8</span><span class="stat-label" data-i18n="stat_card4">Teşhis edilmemiş diyabet oranı</span></div>
+      <div class="stat"><span class="stat-num">783 Milyon</span><span class="stat-label" data-i18n="stat_card5">2045 projeksiyonu</span></div>
+      <div class="stat"><span class="stat-num">1.03 Trilyon USD</span><span class="stat-label" data-i18n="stat_card6">Yıllık küresel ekonomik maliyet</span></div>
+    </div>
+
+    <div class="privacy-grid">
+      <div class="privacy-card">
+        <span class="icon">📈</span>
+        <h4 data-i18n="info1_title">2045'te 783 Milyon</h4>
+        <p data-i18n="info1_body">IDF projeksiyonlarına göre 2045'te dünya genelinde 783 milyon diyabet hastası olacak. Bu bugünkü sayının %33 fazlası.</p>
+      </div>
+      <div class="privacy-card">
+        <span class="icon">🌍</span>
+        <h4 data-i18n="info2_title">%81 Düşük Gelirli Ülkelerde</h4>
+        <p data-i18n="info2_body">Diyabetli bireylerin %81'i düşük ve orta gelirli ülkelerde yaşıyor. Teknolojiye erişim eşitsizliği bu krizi derinleştiriyor.</p>
+      </div>
+      <div class="privacy-card">
+        <span class="icon">💡</span>
+        <h4 data-i18n="info3_title">GlucoNavigatör'ün Misyonu</h4>
+        <p data-i18n="info3_body">Teşhis edilmemiş %42.8'lik kitleye ulaşmak ve CGM'e erişimi olmayan bireylere "Software-as-a-Sensor" ile çözüm sunmak.</p>
+      </div>
+    </div>
+    <div class="source-note">
+      <span data-i18n="stats_source">Kaynak: IDF Diabetes Atlas 11. Baskı, WHO, RKI 2024</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CROSS-LINKS SECTION (NEW) ======================= -->
+<section class="elite crosslinks" id="ekosistem">
+  <div class="container">
+    <p class="section-label" data-i18n="eco_label">PACDI Ekosistemi</p>
+    <h2 class="section-title" data-i18n="eco_title">Sağlık Navigasyonunda<br>Tek Durak.</h2>
+    <div class="elite-perks">
+      <a href="https://cogniroute.de" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+        <div class="perk">
+          <span class="perk-check">🧠</span>
+          <div class="perk-text"><strong>CogniRoute</strong><span data-i18n="eco_card1">Bilişsel sağlık ve GlucoNavigatör el ele — bütünsel yaşam navigasyonu.</span></div>
+        </div>
+      </a>
+      <a href="https://silvercompass.world" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+        <div class="perk">
+          <span class="perk-check">🔮</span>
+          <div class="perk-text"><strong>SilverCompass</strong><span data-i18n="eco_card2">60+ yaş için kan şekeri takibi ve yaşlı bakım navigasyonu.</span></div>
+        </div>
+      </a>
+      <a href="https://easygov.io" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+        <div class="perk">
+          <span class="perk-check">🏛️</span>
+          <div class="perk-text"><strong>EasyGov</strong><span data-i18n="eco_card3">Almanya'da diyabet yardımları ve Pflegegrad başvuru rehberi.</span></div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -862,6 +985,8 @@ nav { display: none; }
         <li><a href="#gizlilik" data-i18n="nav_privacy">Gizlilik</a></li>
         <li><a href="#elite">Elite 3000</a></li>
         <li><a href="#bilim" data-i18n="nav_science">Bilim</a></li>
+        <li><a href="#istatistik" data-i18n="nav_stats">İstatistikler</a></li>
+        <li><a href="#ekosistem" data-i18n="nav_eco">Ekosistem</a></li>
       </ul>
     </div>
     <div>
@@ -876,7 +1001,7 @@ nav { display: none; }
     <div>
       <h5 data-i18n="footer_contact">İletişim</h5>
       <ul>
-        <li><a href="/cdn-cgi/l/email-protection#147d7a727b54737861777b7a75627d7375607b663a7d7b"><span class="__cf_email__" data-cfemail="94fdfaf2fbd4f3f8e1f7fbfaf5e2fdf3f5e0fbe6bafdfb">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#c0a9aea6af80a7acb5a3afaea1b6a9a7a1b4afb2eea9af"><span class="__cf_email__" data-cfemail="40292e262f00272c35232f2e21362d2321362d306e292f">[email&#160;protected]</span></a></li>
         <li><a href="#">Berlin / Frankfurt</a></li>
       </ul>
       <div style="margin-top:1.5rem">
@@ -895,8 +1020,148 @@ nav { display: none; }
   </div>
 </footer>
 
-<script>
-var i18n={tr:{nav_tech:"Teknoloji",nav_privacy:"Gizlilik",nav_elite:"Elite 3000",nav_science:"Bilim",nav_apply:"Basvur",hero_badge:"BETA LANSMAN - ELITE 3000 ACIK",hero_h1:"Glikoz Takibinin<br><em>Otesine Gec.</em>",hero_sub:"GlucoNavigator, yalnizca olcum yapmaz, yorumlar. Stres, uyku ve hareket verilerini birlestiren yapay zeka motoru, sizi rakamlarin arkasindaki gercekle tanistirir.",hero_cta1:"Elite 3000e Katil",hero_cta2:"Teknolojiyi Kesfet",stat1:"Kurucu Uye Kontenjani",stat2:"Omur Boyu Ucretsiz Erisim",stat3:"GDPR ve KVKK Uyumlu",tech_label:"Temel Teknoloji",tech_title:"Software-as-a-Sensor Nedir?",tech_body:"Donanim sinirlarini asmak icin veriyi farkli okumak yeterlidir.",tc1_title:"Tahmine Dayali Analitik",tc1_body:"Gecmis oruntulerinizi analiz eden motor, glikoz dalgalanmalarini onceden tespit eder.",tc2_title:"Stres Glikoz Korelasyonu",tc2_body:"Kortizol yuku ile kan sekeri arasindaki iliskiyi modelleyen algoritmamiz.",tc3_title:"Data Integrity Guard",tc3_body:"Verileriniz cihazinizdan cikmadan islenir ve sifreli sekilde gonderilir.",tc4_title:"ARGE Destekli Motor",tc4_body:"Klinik ortaklarla yurutulen ARGE calismalari algoritmanin dogrulugunu artirir.",chart_badge:"Tahmin Aktif",visual_title:"Gercek Zamanli Metabolik Harita",visual_body:"Glikoz, nabiz, stres ve uyku verileri tek bir akilli grafikte birlesir.",priv_label:"Anonimlik Kalkani",priv_title:"Veri Sahibi Hep Sizsiniz.",priv_body:"Saglik veriniz hassastir. GDPR-native mimari verinizi korur.",pc1_title:"GDPR ve KVKK Tam Uyum",pc1_body:"Avrupa ve Turkiye gizlilik mevzuatina uygun veri isleme.",pc2_title:"Sifir Tanimlayici Ilkesi",pc2_body:"Hicbir kisisel tanimlayici sunucularimiza ulasmaz.",pc3_title:"Yerelden Isleme",pc3_body:"Hassas hesaplamalar cihazinizda gerceklesir.",elite_label:"Kurucu Topluluk",elite_title:"Elite 3000: Hikayen Ortak Yazarlari.",elite_body:"Ilk 3000 uye Onursal Kuruculardir.",perk1_title:"Omur Boyu Ucretsiz",perk1_body:"Premium ozelliklere kalici erisim.",perk2_title:"Urun Yol Haritasi",perk2_body:"Hangi ozelligi onceliklendireceginizi siz belirlersiniz.",perk3_title:"Onursal Kurucu Rozeti",perk3_body:"Profil ve uygulama ici kalici tanımlama.",perk4_title:"Ozel Erken Erisim",perk4_body:"Tum beta ozellikler once size acilir.",counter_text:"kontenjan doldu",apply_label:"Elite 3000 Basvurusu",apply_title:"Onursal Kurucu Olarak Yerini Al.",sci_label:"Bilimsel Zemin",sci_title:"Veriye Dayali, Insana Odakli.",s1_title:"Postprandiyal Glikoz Modellemesi",s1_body:"Yemek sonrasi glikoz tepkisini modelleyen ML katmani.",s2_title:"Sirkadiyen Ritim",s2_body:"Uyku ve kortizol verileri tahminlere dahil edilir.",s3_title:"Egzersiz Glikoz Dinamikleri",s3_body:"Aerobik ve anaerobik aktivitelerin glikoz uzerindeki etkileri.",s4_title:"Anomali Tespiti",s4_body:"7 biyometrik kaynak es zamanli islenir.",aside_p1:"Dogrulama katmani sensor hatalarini otomatik isaretler.",aside_p2:"ARGE klinik ortaklarla yurutuluyor.",footer_desc:"Yapay zeka destekli glikoz navigasyon platformu.",footer_platform:"Platform",footer_legal:"Yasal",footer_contact:"Iletisim",footer_privacy_link:"Gizlilik Politikasi",footer_terms:"Kullanim Kosullari",footer_copy:"2026 GlucoNavigator"},de:{nav_tech:"Technologie",nav_privacy:"Datenschutz",nav_elite:"Elite 3000",nav_science:"Wissenschaft",nav_apply:"Bewerben",hero_badge:"BETA-LAUNCH - ELITE 3000 OFFEN",hero_h1:"Glukose-Tracking<br><em>neu gedacht.</em>",hero_sub:"GlucoNavigator misst nicht nur, er interpretiert. Die KI verbindet Stress, Schlaf und Bewegungsdaten.",hero_cta1:"Elite 3000 beitreten",hero_cta2:"Technologie entdecken",stat1:"Gruender-Mitglieder",stat2:"Lebenslang kostenlos",stat3:"DSGVO konform",tech_label:"Kerntechnologie",tech_title:"Was ist Software-as-a-Sensor?",tech_body:"GlucoNavigator kombiniert Glukosewerte mit biometrischen Daten.",tc1_title:"Praediktive Analytik",tc1_body:"Der Motor erkennt Glukoseschwankungen bevor sie auftreten.",tc2_title:"Stress Glukose Korrelation",tc2_body:"Unser Algorithmus macht emotionale Ausloser sichtbar.",tc3_title:"Data Integrity Guard",tc3_body:"Ihre Daten verlassen nie Ihr Geraet.",tc4_title:"F&E Motor",tc4_body:"Klinische Partner verbessern die Genauigkeit.",chart_badge:"Prognose aktiv",visual_title:"Echtzeit Stoffwechselkarte",visual_body:"Glukose, Puls, Stress und Schlaf in einer Grafik.",priv_label:"Anonymitaetsschild",priv_title:"Sie bleiben Eigentuemer.",priv_body:"Ihre Daten sind sicher. DSGVO-native Architektur.",pc1_title:"DSGVO konform",pc1_body:"Europaeisches Datenschutzrecht.",pc2_title:"Zero-ID-Prinzip",pc2_body:"Kein Identifier erreicht unsere Server.",pc3_title:"On-Device",pc3_body:"Berechnungen auf Ihrem Geraet.",elite_label:"Gruender-Community",elite_title:"Elite 3000: Mitautoren.",elite_body:"Die ersten 3000 sind Ehrengründer.",perk1_title:"Lebenslang kostenlos",perk1_body:"Dauerhafter Premium-Zugang.",perk2_title:"Roadmap",perk2_body:"Sie bestimmen die Prioritaeten.",perk3_title:"Ehrengründer-Abzeichen",perk3_body:"Kennzeichnung im Profil.",perk4_title:"Frueh-Zugang",perk4_body:"Beta-Funktionen zuerst.",counter_text:"Plaetze vergeben",apply_label:"Elite 3000 Bewerbung",apply_title:"Werden Sie Ehrengründer.",sci_label:"Wissenschaft",sci_title:"Datengestuetzt, menschenzentriert.",s1_title:"Glukosemodellierung",s1_body:"ML-Schicht fuer Glukoseantwort.",s2_title:"Circadianer Rhythmus",s2_body:"Schlaf und Cortisol in Prognosen.",s3_title:"Sport Dynamik",s3_body:"Aerobe und anaerobe Aktivitaeten.",s4_title:"Anomalie-Erkennung",s4_body:"7 Quellen gleichzeitig.",aside_p1:"Sensorfehler automatisch markiert.",aside_p2:"F&E mit klinischen Partnern.",footer_desc:"KI-Glukose-Navigationsplattform.",footer_platform:"Plattform",footer_legal:"Rechtliches",footer_contact:"Kontakt",footer_privacy_link:"Datenschutz",footer_terms:"Nutzungsbedingungen",footer_copy:"2026 GlucoNavigator"},en:{nav_tech:"Technology",nav_privacy:"Privacy",nav_elite:"Elite 3000",nav_science:"Science",nav_apply:"Apply",hero_badge:"BETA LAUNCH - ELITE 3000 OPEN",hero_h1:"Go Beyond<br><em>Glucose Tracking.</em>",hero_sub:"GlucoNavigator does not just measure, it interprets. Our AI combines stress, sleep and movement data.",hero_cta1:"Join Elite 3000",hero_cta2:"Explore Technology",stat1:"Founding Member Slots",stat2:"Lifetime Free Access",stat3:"GDPR Compliant",tech_label:"Core Technology",tech_title:"What is Software-as-a-Sensor?",tech_body:"GlucoNavigator combines glucose values with biometric data.",tc1_title:"Predictive Analytics",tc1_body:"The engine detects glucose fluctuations before they happen.",tc2_title:"Stress Glucose Correlation",tc2_body:"Our algorithm models cortisol and blood sugar.",tc3_title:"Data Integrity Guard",tc3_body:"Your data never leaves your device.",tc4_title:"R&D Engine",tc4_body:"Clinical partners improve accuracy.",chart_badge:"Prediction Active",visual_title:"Real-Time Metabolic Map",visual_body:"Glucose, pulse, stress and sleep in one graph.",priv_label:"Anonymity Shield",priv_title:"You Own Your Data.",priv_body:"Your health data is protected. GDPR-native.",pc1_title:"Full GDPR Compliance",pc1_body:"European and Turkish privacy law.",pc2_title:"Zero-ID Principle",pc2_body:"No identifier reaches our servers.",pc3_title:"On-Device Processing",pc3_body:"Computations on your device.",elite_label:"Founding Community",elite_title:"Elite 3000: Co-Authors.",elite_body:"The first 3000 are Honorary Founders.",perk1_title:"Lifetime Free",perk1_body:"Permanent premium access.",perk2_title:"Product Roadmap",perk2_body:"You set the priorities.",perk3_title:"Honorary Founder Badge",perk3_body:"Permanent recognition.",perk4_title:"Early Access",perk4_body:"Beta features first.",counter_text:"slots filled",apply_label:"Elite 3000 Application",apply_title:"Claim Your Place.",sci_label:"Science",sci_title:"Data-Driven, Human-Centered.",s1_title:"Glucose Modeling",s1_body:"ML layer for glucose response.",s2_title:"Circadian Rhythm",s2_body:"Sleep and cortisol in predictions.",s3_title:"Exercise Dynamics",s3_body:"Aerobic and anaerobic effects.",s4_title:"Anomaly Detection",s4_body:"7 sources processed simultaneously.",aside_p1:"Sensor errors flagged automatically.",aside_p2:"R&D with clinical partners.",footer_desc:"AI-powered glucose navigation platform.",footer_platform:"Platform",footer_legal:"Legal",footer_contact:"Contact",footer_privacy_link:"Privacy Policy",footer_terms:"Terms of Use",footer_copy:"2026 GlucoNavigator"}};
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+var i18n = {
+  tr: {
+    nav_tech: "Teknoloji", nav_privacy: "Gizlilik", nav_elite: "Elite 3000", nav_science: "Bilim", nav_apply: "Başvur",
+    nav_stats: "İstatistikler", nav_eco: "Ekosistem",
+    hero_badge: "BETA LANSMAN — ELİTE 3000 AÇIK",
+    hero_h1: "Glikoz Takibinin<br><em>Ötesine Geç.</em>",
+    hero_sub: "GlucoNavigator, yalnızca ölçüm yapmaz — yorumlar. Stres, uyku ve hareket verilerini birleştiren yapay zeka motoru, sizi rakamların arkasındaki gerçekle tanıştırır.",
+    hero_cta1: "🎯 Elite 3000'e Katıl", hero_cta2: "Teknolojiyi Keşfet", hero_share: "📤 Paylaş",
+    stat1: "Kurucu Üye Kontenjanı", stat2: "Ömür Boyu Ücretsiz Erişim", stat3: "GDPR & KVKK Uyumlu",
+    tech_label: "Temel Teknoloji", tech_title: "Software-as-a-Sensor™<br>Nedir?", tech_body: "Donanımın sınırlarını aşmak için veriyi farklı okumak yeterlidir.",
+    tc1_title: "Tahmine Dayalı Analitik", tc1_body: "Geçmiş örüntülerinizi analiz eden motor, glikoz dalgalanmalarını önceden tespit eder.",
+    tc2_title: "Stres–Glikoz Korelasyonu", tc2_body: "Kortizol yükü ile kan şekeri arasındaki ilişkiyi modelleyen algoritmamız.",
+    tc3_title: "Data Integrity Guard", tc3_body: "Verileriniz cihazınızdan çıkmadan işlenir ve şifreli şekilde gönderilir.",
+    tc4_title: "AR-GE Destekli Motor", tc4_body: "Klinik ortaklarla yürütülen Ar-Ge çalışmaları algoritmanın doğruluğunu artırır.",
+    chart_badge: "Tahmin Aktif", visual_title: "Gerçek Zamanlı Metabolik Harita", visual_body: "Glikoz, nabız, stres ve uyku verileri tek bir akıllı grafikte birleşir.",
+    priv_label: "Anonimlik Kalkanı", priv_title: "Veri Sahibi<br>Hep Sizsiniz.", priv_body: "Sağlık veriniz hassastır. GDPR-native mimari verinizi korur.",
+    pc1_title: "GDPR & KVKK Tam Uyum", pc1_body: "Avrupa ve Türkiye gizlilik mevzuatına uygun veri işleme.",
+    pc2_title: "Sıfır Tanımlayıcı İlkesi", pc2_body: "Hiçbir kişisel tanımlayıcı sunucularımıza ulaşmaz.",
+    pc3_title: "Yerelden İşleme", pc3_body: "Hassas hesaplamalar cihazınızda gerçekleşir.",
+    elite_label: "Kurucu Topluluk", elite_title: "Elite 3000:<br>Hikâyenin Ortak Yazarları.", elite_body: "İlk 3.000 üye Onursal Kuruculardır.",
+    perk1_title: "Ömür Boyu Ücretsiz", perk1_body: "Premium özelliklere kalıcı erişim.",
+    perk2_title: "Ürün Yol Haritası", perk2_body: "Hangi özelliği önceliklendireceğinizi siz belirlersiniz.",
+    perk3_title: "Onursal Kurucu Rozeti", perk3_body: "Profil ve uygulama içi kalıcı tanımlama.",
+    perk4_title: "Özel Erken Erişim", perk4_body: "Tüm beta özellikler önce size açılır.",
+    counter_text: "kontenjan doldu",
+    apply_label: "Elite 3000 Başvurusu", apply_title: "Onursal Kurucu Olarak Yerini Al.",
+    sci_label: "Bilimsel Zemin", sci_title: "Veriye Dayalı,<br>İnsana Odaklı.",
+    s1_title: "Postprandiyal Glikoz Modellemesi", s1_body: "Yemek sonrası glikoz tepkisini modelleyen ML katmanı.",
+    s2_title: "Sirkadiyen Ritim", s2_body: "Uyku ve kortizol verileri tahminlere dahil edilir.",
+    s3_title: "Egzersiz–Glikoz Dinamikleri", s3_body: "Aerobik ve anaerobik aktivitelerin glikoz üzerindeki etkileri.",
+    s4_title: "Anomali Tespiti", s4_body: "7 biyometrik kaynak eş zamanlı işlenir.",
+    aside_p1: "Doğrulama katmanı sensör hatalarını otomatik işaretler.", aside_p2: "Ar-Ge klinik ortaklarla yürütülüyor.",
+    footer_desc: "Yapay zeka destekli glikoz navigasyon platformu.", footer_platform: "Platform", footer_legal: "Yasal", footer_contact: "İletişim",
+    footer_privacy_link: "Gizlilik Politikası", footer_terms: "Kullanım Koşulları", footer_copy: "© 2026 GlucoNavigator · Tüm hakları saklıdır.",
+    // STATISTICS SECTION translations
+    stats_label: "Küresel Tablo", stats_title: "Diyabet: Rakamların<br>Arkasındaki Gerçek.",
+    stat_card1: "Dünya geneli diyabet hastası (2024)", stat_card2: "Almanya'da diyabet hastası", stat_card3: "Türkiye'de diyabet hastası",
+    stat_card4: "Teşhis edilmemiş diyabet oranı", stat_card5: "2045 projeksiyonu", stat_card6: "Yıllık küresel ekonomik maliyet",
+    info1_title: "2045'te 783 Milyon", info1_body: "IDF projeksiyonlarına göre 2045'te dünya genelinde 783 milyon diyabet hastası olacak. Bu bugünkü sayının %33 fazlası.",
+    info2_title: "%81 Düşük Gelirli Ülkelerde", info2_body: "Diyabetli bireylerin %81'i düşük ve orta gelirli ülkelerde yaşıyor. Teknolojiye erişim eşitsizliği bu krizi derinleştiriyor.",
+    info3_title: "GlucoNavigatör'ün Misyonu", info3_body: "Teşhis edilmemiş %42.8'lik kitleye ulaşmak ve CGM'e erişimi olmayan bireylere 'Software-as-a-Sensor' ile çözüm sunmak.",
+    stats_source: "Kaynak: IDF Diabetes Atlas 11. Baskı, WHO, RKI 2024",
+    // ECO translations
+    eco_label: "PACDI Ekosistemi", eco_title: "Sağlık Navigasyonunda<br>Tek Durak.",
+    eco_card1: "Bilişsel sağlık ve GlucoNavigatör el ele — bütünsel yaşam navigasyonu.",
+    eco_card2: "60+ yaş için kan şekeri takibi ve yaşlı bakım navigasyonu.",
+    eco_card3: "Almanya'da diyabet yardımları ve Pflegegrad başvuru rehberi."
+  },
+  de: {
+    nav_tech: "Technologie", nav_privacy: "Datenschutz", nav_elite: "Elite 3000", nav_science: "Wissenschaft", nav_apply: "Bewerben",
+    nav_stats: "Statistiken", nav_eco: "Ökosystem",
+    hero_badge: "BETA-LAUNCH - ELITE 3000 OFFEN",
+    hero_h1: "Glukose-Tracking<br><em>neu gedacht.</em>",
+    hero_sub: "GlucoNavigator misst nicht nur, er interpretiert. Die KI verbindet Stress, Schlaf und Bewegungsdaten.",
+    hero_cta1: "Elite 3000 beitreten", hero_cta2: "Technologie entdecken", hero_share: "📤 Teilen",
+    stat1: "Gründer-Mitglieder", stat2: "Lebenslang kostenlos", stat3: "DSGVO konform",
+    tech_label: "Kerntechnologie", tech_title: "Was ist Software-as-a-Sensor?", tech_body: "GlucoNavigator kombiniert Glukosewerte mit biometrischen Daten.",
+    tc1_title: "Prädiktive Analytik", tc1_body: "Der Motor erkennt Glukoseschwankungen bevor sie auftreten.",
+    tc2_title: "Stress–Glukose Korrelation", tc2_body: "Unser Algorithmus macht emotionale Auslöser sichtbar.",
+    tc3_title: "Data Integrity Guard", tc3_body: "Ihre Daten verlassen nie Ihr Gerät.",
+    tc4_title: "F&E Motor", tc4_body: "Klinische Partner verbessern die Genauigkeit.",
+    chart_badge: "Prognose aktiv", visual_title: "Echtzeit Stoffwechselkarte", visual_body: "Glukose, Puls, Stress und Schlaf in einer Grafik.",
+    priv_label: "Anonymitätsschild", priv_title: "Sie bleiben Eigentümer.", priv_body: "Ihre Daten sind sicher. DSGVO-native Architektur.",
+    pc1_title: "DSGVO konform", pc1_body: "Europäisches Datenschutzrecht.",
+    pc2_title: "Zero-ID-Prinzip", pc2_body: "Kein Identifier erreicht unsere Server.",
+    pc3_title: "On-Device", pc3_body: "Berechnungen auf Ihrem Gerät.",
+    elite_label: "Gründer-Community", elite_title: "Elite 3000: Mitautoren.", elite_body: "Die ersten 3000 sind Ehrengründer.",
+    perk1_title: "Lebenslang kostenlos", perk1_body: "Dauerhafter Premium-Zugang.",
+    perk2_title: "Roadmap", perk2_body: "Sie bestimmen die Prioritäten.",
+    perk3_title: "Ehrengründer-Abzeichen", perk3_body: "Kennzeichnung im Profil.",
+    perk4_title: "Früh-Zugang", perk4_body: "Beta-Funktionen zuerst.",
+    counter_text: "Plätze vergeben",
+    apply_label: "Elite 3000 Bewerbung", apply_title: "Werden Sie Ehrengründer.",
+    sci_label: "Wissenschaft", sci_title: "Datengestützt, menschenzentriert.",
+    s1_title: "Glukosemodellierung", s1_body: "ML-Schicht für Glukoseantwort.",
+    s2_title: "Circadianer Rhythmus", s2_body: "Schlaf und Cortisol in Prognosen.",
+    s3_title: "Sport Dynamik", s3_body: "Aerobe und anaerobe Aktivitäten.",
+    s4_title: "Anomalie-Erkennung", s4_body: "7 Quellen gleichzeitig.",
+    aside_p1: "Sensorfehler automatisch markiert.", aside_p2: "F&E mit klinischen Partnern.",
+    footer_desc: "KI-Glukose-Navigationsplattform.", footer_platform: "Plattform", footer_legal: "Rechtliches", footer_contact: "Kontakt",
+    footer_privacy_link: "Datenschutz", footer_terms: "Nutzungsbedingungen", footer_copy: "© 2026 GlucoNavigator",
+    // STATISTICS (DE)
+    stats_label: "Globale Zahlen", stats_title: "Diabetes: Die Wahrheit<br>hinter den Zahlen.",
+    stat_card1: "Diabetiker weltweit (2024)", stat_card2: "Diabetiker in Deutschland", stat_card3: "Diabetiker in der Türkei",
+    stat_card4: "Undiagnostizierte Fälle", stat_card5: "Prognose 2045", stat_card6: "Jährliche globale Kosten",
+    info1_title: "783 Millionen bis 2045", info1_body: "Laut IDF-Projektionen werden 2045 weltweit 783 Millionen Menschen an Diabetes leiden — 33% mehr als heute.",
+    info2_title: "81% in Niedriglohnländern", info2_body: "81% der Diabetiker leben in Ländern mit niedrigem und mittlerem Einkommen. Ungleicher Technologiezugang verschärft die Krise.",
+    info3_title: "GlucoNavigators Mission", info3_body: "Die 42,8% nicht diagnostizierten Fälle erreichen und Menschen ohne CGM-Zugang mit Software-as-a-Sensor unterstützen.",
+    stats_source: "Quelle: IDF Diabetes Atlas 11. Aufl., WHO, RKI 2024",
+    eco_label: "PACDI Ökosystem", eco_title: "Eine Anlaufstelle für<br>Gesundheitsnavigation.",
+    eco_card1: "Kognitive Gesundheit und GlucoNavigatör Hand in Hand.",
+    eco_card2: "Blutzuckerüberwachung und Seniorenbegleitung für 60+.",
+    eco_card3: "Diabetes-Unterstützung und Pflegegrad-Antragshilfe."
+  },
+  en: {
+    nav_tech: "Technology", nav_privacy: "Privacy", nav_elite: "Elite 3000", nav_science: "Science", nav_apply: "Apply",
+    nav_stats: "Statistics", nav_eco: "Ecosystem",
+    hero_badge: "BETA LAUNCH - ELITE 3000 OPEN",
+    hero_h1: "Go Beyond<br><em>Glucose Tracking.</em>",
+    hero_sub: "GlucoNavigator does not just measure, it interprets. Our AI combines stress, sleep and movement data.",
+    hero_cta1: "Join Elite 3000", hero_cta2: "Explore Technology", hero_share: "📤 Share",
+    stat1: "Founding Member Slots", stat2: "Lifetime Free Access", stat3: "GDPR Compliant",
+    tech_label: "Core Technology", tech_title: "What is Software-as-a-Sensor?", tech_body: "GlucoNavigator combines glucose values with biometric data.",
+    tc1_title: "Predictive Analytics", tc1_body: "The engine detects glucose fluctuations before they happen.",
+    tc2_title: "Stress–Glucose Correlation", tc2_body: "Our algorithm models cortisol and blood sugar.",
+    tc3_title: "Data Integrity Guard", tc3_body: "Your data never leaves your device.",
+    tc4_title: "R&D Engine", tc4_body: "Clinical partners improve accuracy.",
+    chart_badge: "Prediction Active", visual_title: "Real-Time Metabolic Map", visual_body: "Glucose, pulse, stress and sleep in one graph.",
+    priv_label: "Anonymity Shield", priv_title: "You Own Your Data.", priv_body: "Your health data is protected. GDPR-native.",
+    pc1_title: "Full GDPR Compliance", pc1_body: "European and Turkish privacy law.",
+    pc2_title: "Zero-ID Principle", pc2_body: "No identifier reaches our servers.",
+    pc3_title: "On-Device Processing", pc3_body: "Computations on your device.",
+    elite_label: "Founding Community", elite_title: "Elite 3000: Co-Authors.", elite_body: "The first 3000 are Honorary Founders.",
+    perk1_title: "Lifetime Free", perk1_body: "Permanent premium access.",
+    perk2_title: "Product Roadmap", perk2_body: "You set the priorities.",
+    perk3_title: "Honorary Founder Badge", perk3_body: "Permanent recognition.",
+    perk4_title: "Early Access", perk4_body: "Beta features first.",
+    counter_text: "slots filled",
+    apply_label: "Elite 3000 Application", apply_title: "Claim Your Place.",
+    sci_label: "Science", sci_title: "Data-Driven,<br>Human-Centered.",
+    s1_title: "Glucose Modeling", s1_body: "ML layer for glucose response.",
+    s2_title: "Circadian Rhythm", s2_body: "Sleep and cortisol in predictions.",
+    s3_title: "Exercise Dynamics", s3_body: "Aerobic and anaerobic effects.",
+    s4_title: "Anomaly Detection", s4_body: "7 sources processed simultaneously.",
+    aside_p1: "Sensor errors flagged automatically.", aside_p2: "R&D with clinical partners.",
+    footer_desc: "AI-powered glucose navigation platform.", footer_platform: "Platform", footer_legal: "Legal", footer_contact: "Contact",
+    footer_privacy_link: "Privacy Policy", footer_terms: "Terms of Use", footer_copy: "© 2026 GlucoNavigator",
+    // STATISTICS (EN)
+    stats_label: "Global Picture", stats_title: "Diabetes: The Truth<br>Behind the Numbers.",
+    stat_card1: "Diabetics worldwide (2024)", stat_card2: "Diabetics in Germany", stat_card3: "Diabetics in Turkey",
+    stat_card4: "Undiagnosed cases", stat_card5: "2045 projection", stat_card6: "Annual global economic cost",
+    info1_title: "783 Million by 2045", info1_body: "According to IDF projections, 783 million people will have diabetes by 2045 — 33% more than today.",
+    info2_title: "81% in Low-Income Countries", info2_body: "81% of people with diabetes live in low and middle-income countries. Unequal access to technology deepens the crisis.",
+    info3_title: "GlucoNavigator's Mission", info3_body: "Reaching the 42.8% undiagnosed and providing Software-as-a-Sensor solutions for those without CGM access.",
+    stats_source: "Source: IDF Diabetes Atlas 11th Ed., WHO, RKI 2024",
+    eco_label: "PACDI Ecosystem", eco_title: "One Stop for<br>Health Navigation.",
+    eco_card1: "Cognitive health and GlucoNavigatör hand in hand.",
+    eco_card2: "Blood sugar tracking and senior care navigation for 60+.",
+    eco_card3: "Diabetes benefits and Pflegegrad application guide."
+  }
+};
 
 function setLang(l){
   var t=i18n[l];
@@ -906,8 +1171,14 @@ function setLang(l){
     var k=els[i].getAttribute("data-i18n");
     if(t[k]!==undefined)els[i].innerHTML=t[k];
   }
+  // also update placeholder for inputs with data-i18n-ph
+  var phs=document.querySelectorAll("[data-i18n-ph]");
+  for(var j=0;j<phs.length;j++){
+    var phKey=phs[j].getAttribute("data-i18n-ph");
+    if(t[phKey]) phs[j].placeholder=t[phKey];
+  }
   var bs=document.querySelectorAll(".lang-switch button");
-  for(var j=0;j<bs.length;j++)bs[j].classList.remove("active");
+  for(var k=0;k<bs.length;k++)bs[k].classList.remove("active");
   var ab=document.getElementById("btn-"+l);
   if(ab)ab.classList.add("active");
   document.documentElement.lang=l;
@@ -927,10 +1198,34 @@ function submitForm(){
   var gd=document.getElementById("f-gdpr").checked;
   var msg=document.getElementById("form-msg");
   var btn=document.querySelector(".form-submit");
-  if(!n||!e||!c||!ty||!fr){msg.style.color="#e67e22";msg.textContent="Lutfen zorunlu alanlari doldurun.";return;}
-  if(!gd){msg.style.color="#e67e22";msg.textContent="Gizlilik politikasini onaylayin.";return;}
-  btn.textContent="Gonderiliyor...";btn.disabled=true;
-  fetch("https://formspree.io/f/xbdzpdwp",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:n,email:e,city:document.getElementById("f-city").value.trim(),country:c,diyabet_tipi:ty,olcum_sikligi:fr,motivasyon:document.getElementById("f-motivation").value.trim(),kaynak:"GlucoNavigator Elite 3000"})}).then(function(r){if(r.ok){btn.textContent="Basvurunuz alindi!";btn.style.background="#27ae60";}else{btn.textContent="Elite 3000 Basvur";btn.disabled=false;msg.style.color="#e67e22";msg.textContent="Hata olustu.";}}).catch(function(){btn.textContent="Elite 3000 Basvur";btn.disabled=false;msg.style.color="#e67e22";msg.textContent="Baglanti hatasi.";});
+  if(!n||!e||!c||!ty||!fr){msg.style.color="#e67e22";msg.textContent="Lütfen zorunlu alanları doldurun.";return;}
+  if(!gd){msg.style.color="#e67e22";msg.textContent="Gizlilik politikasını onaylayın.";return;}
+  btn.textContent="Gönderiliyor...";btn.disabled=true;
+  fetch("https://formspree.io/f/xbdzpdwp",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:n,email:e,city:document.getElementById("f-city").value.trim(),country:c,diyabet_tipi:ty,olcum_sikligi:fr,motivasyon:document.getElementById("f-motivation").value.trim(),kaynak:"GlucoNavigator Elite 3000"})}).then(function(r){if(r.ok){btn.textContent="Başvurunuz alındı!";btn.style.background="#27ae60";}else{btn.textContent="Elite 3000 Başvur";btn.disabled=false;msg.style.color="#e67e22";msg.textContent="Hata oluştu.";}}).catch(function(){btn.textContent="Elite 3000 Başvur";btn.disabled=false;msg.style.color="#e67e22";msg.textContent="Bağlantı hatası.";});
+}
+
+function shareGluco() {
+  var currentLang = document.documentElement.lang || "tr";
+  var shareText = "";
+  if (currentLang === "tr") shareText = "GlucoNavigatör: Glikoz takibinin ötesine geç! Elite 3000 kurucu üyelik açık → ";
+  else if (currentLang === "de") shareText = "GlucoNavigatör: Über das Glukose-Tracking hinaus! Elite 3000 offen → ";
+  else shareText = "GlucoNavigatör: Go beyond glucose tracking! Elite 3000 open → ";
+  var shareUrl = "https://gluconavigator.io";
+  if (navigator.share) {
+    navigator.share({
+      title: "GlucoNavigatör",
+      text: shareText,
+      url: shareUrl
+    });
+  } else {
+    var textarea = document.createElement("textarea");
+    textarea.value = shareText + shareUrl;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    alert(shareText + shareUrl);
+  }
 }
 
 window.addEventListener("load",function(){
@@ -939,6 +1234,5 @@ window.addEventListener("load",function(){
   if(f)setTimeout(function(){f.style.width="18%";},500);
 });
 </script>
-
 </body>
 </html>
