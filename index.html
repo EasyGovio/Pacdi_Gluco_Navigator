@@ -570,6 +570,17 @@
     .footer-grid  { grid-template-columns: 1fr 1fr; }
     .hero-stats   { flex-wrap: wrap; gap: 1.5rem; }
   }
+
+  /* Chrome white background fixes */
+  .tech { background-color: #F5F7FA !important; }
+  .privacy { background-color: #FFFFFF !important; }
+  .apply { background-color: #F5F7FA !important; }
+  .science { background-color: #FFFFFF !important; }
+  .apply-wrap { background-color: #FFFFFF !important; }
+  .privacy-card { background-color: #FFFFFF !important; }
+  .tech-card { background-color: #FFFFFF !important; }
+  .science-aside { background-color: #E8FAF9 !important; }
+  body { background-color: #0A1A3A !important; }
 </style>
 </head>
 <body>
@@ -889,7 +900,7 @@
         <label style="display:flex;align-items:flex-start;gap:.8rem;cursor:pointer">
           <input type="checkbox" id="f-gdpr" style="accent-color:#2AC3B7;width:16px;height:16px;margin-top:2px;flex-shrink:0">
           <span style="font-size:.85rem;color:#6B7A8D;line-height:1.6" data-i18n="gdpr_text">
-            <a href="#" style="color:#2AC3B7;text-decoration:none">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum. GDPR & KVKK uyumludur.
+            <a href="#" onclick="openModal('privacy'); return false;" style="color:#2AC3B7;text-decoration:none">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum. GDPR & KVKK uyumludur.
           </span>
         </label>
       </div>
@@ -974,16 +985,16 @@
     <div>
       <h5 data-i18n="footer_legal">Yasal</h5>
       <ul>
-        <li><a href="#" data-i18n="footer_privacy_link">Gizlilik Politikası</a></li>
-        <li><a href="#" data-i18n="footer_terms">Kullanım Koşulları</a></li>
-        <li><a href="#">KVKK</a></li>
-        <li><a href="#">DSGVO</a></li>
+        <li><a href="#" onclick="openModal('privacy'); return false;" data-i18n="footer_privacy_link">Gizlilik Politikası</a></li>
+        <li><a href="#" onclick="openModal('terms'); return false;" data-i18n="footer_terms">Kullanım Koşulları</a></li>
+        <li><a href="#" onclick="openModal('kvkk'); return false;">KVKK</a></li>
+        <li><a href="#" onclick="openModal('dsgvo'); return false;">DSGVO</a></li>
       </ul>
     </div>
     <div>
       <h5 data-i18n="footer_contact">İletişim</h5>
       <ul>
-        <li><a href="mailto:info@pacdi.de">info@pacdi.de</a></li>
+        <li><a href="mailto:info@gluconavigator.io">info@gluconavigator.io</a></li>
         <li><a href="#">Berlin / Frankfurt</a></li>
       </ul>
       <div style="margin-top:1.5rem">
@@ -1003,6 +1014,14 @@
     </div>
   </div>
 </footer>
+
+<!-- LEGAL MODAL -->
+<div id="legalModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:9999;overflow-y:auto;padding:20px;">
+  <div style="max-width:680px;margin:40px auto;background:#0A1A3A;border-radius:24px;padding:2.5rem;border:1px solid rgba(42,195,183,0.2);position:relative;">
+    <button onclick="closeModal()" style="position:absolute;top:1rem;right:1rem;background:rgba(42,195,183,0.1);border:1px solid rgba(42,195,183,0.3);color:#2AC3B7;border-radius:8px;padding:0.4rem 0.9rem;cursor:pointer;font-size:1rem;">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
 
 <script>
 var i18n = {
@@ -1206,6 +1225,63 @@ function shareGluco() {
     alert(shareText + shareUrl);
   }
 }
+
+// Legal modal texts
+var legalTexts = {
+  privacy: {
+    tr: { title: "Gizlilik Politikası", body: "GlucoNavigator olarak kişisel verilerinizin güvenliğini en yüksek önceliğimiz olarak görüyoruz.\n\n**Toplanan Veriler:** Ad, e-posta, şehir, ülke ve diyabet durumu bilgileri yalnızca Elite 3000 başvurusu kapsamında toplanır.\n\n**Veri Kullanımı:** Verileriniz yalnızca platform geliştirme ve beta iletişimi amacıyla kullanılır. Üçüncü taraflarla paylaşılmaz, satılmaz.\n\n**Veri Saklama:** Verileriniz talep etmeniz halinde silinir. Saklama süresi azami 2 yıldır.\n\n**Haklarınız:** GDPR ve KVKK kapsamında verilerinize erişim, düzeltme ve silme hakkına sahipsiniz.\n\n**İletişim:** info@gluconavigator.io" },
+    de: { title: "Datenschutzerklärung", body: "GlucoNavigator betrachtet den Schutz Ihrer persönlichen Daten als höchste Priorität.\n\n**Erhobene Daten:** Name, E-Mail, Stadt, Land und Diabetesstatus werden nur im Rahmen der Elite 3000-Bewerbung erhoben.\n\n**Datennutzung:** Ihre Daten werden ausschließlich für Plattformentwicklung und Beta-Kommunikation verwendet. Sie werden nicht an Dritte weitergegeben oder verkauft.\n\n**Datenspeicherung:** Ihre Daten werden auf Anfrage gelöscht. Die maximale Speicherdauer beträgt 2 Jahre.\n\n**Ihre Rechte:** Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten gemäß DSGVO.\n\n**Kontakt:** info@gluconavigator.io" },
+    en: { title: "Privacy Policy", body: "GlucoNavigator considers the protection of your personal data our highest priority.\n\n**Data Collected:** Name, email, city, country and diabetes status are collected only for the Elite 3000 application.\n\n**Data Usage:** Your data is used solely for platform development and beta communication. It is never shared with or sold to third parties.\n\n**Data Retention:** Your data will be deleted upon request. Maximum retention period is 2 years.\n\n**Your Rights:** You have the right to access, correct and delete your data under GDPR and KVKK.\n\n**Contact:** info@gluconavigator.io" }
+  },
+  terms: {
+    tr: { title: "Kullanım Koşulları", body: "GlucoNavigator platformunu kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız.\n\n**Platform Amacı:** GlucoNavigator bir tıbbi cihaz değildir. Sunulan bilgiler yalnızca genel bilgilendirme amaçlıdır ve tıbbi tavsiye yerine geçmez.\n\n**Kullanıcı Sorumluluğu:** Sağlık kararlarınızı mutlaka doktorunuza danışarak alınız. Platform verileri referans amaçlıdır.\n\n**Fikri Mülkiyet:** GlucoNavigator markası ve içerikleri TÜRKPATENT tescil no 4096543 kapsamında korunmaktadır.\n\n**Değişiklik Hakkı:** Kullanım koşulları önceden haber verilmeksizin güncellenebilir.\n\n**İletişim:** info@gluconavigator.io" },
+    de: { title: "Nutzungsbedingungen", body: "Durch die Nutzung von GlucoNavigator stimmen Sie den folgenden Bedingungen zu.\n\n**Plattformzweck:** GlucoNavigator ist kein Medizinprodukt. Die bereitgestellten Informationen dienen nur zur allgemeinen Information und ersetzen keine ärztliche Beratung.\n\n**Nutzerverantwortung:** Treffen Sie Gesundheitsentscheidungen immer in Absprache mit Ihrem Arzt. Plattformdaten sind als Referenz gedacht.\n\n**Geistiges Eigentum:** Die Marke GlucoNavigator ist unter TÜRKPATENT Nr. 4096543 geschützt.\n\n**Änderungsrecht:** Nutzungsbedingungen können ohne vorherige Ankündigung aktualisiert werden.\n\n**Kontakt:** info@gluconavigator.io" },
+    en: { title: "Terms of Use", body: "By using the GlucoNavigator platform, you agree to the following terms.\n\n**Platform Purpose:** GlucoNavigator is not a medical device. Information provided is for general informational purposes only and does not replace medical advice.\n\n**User Responsibility:** Always consult your doctor before making health decisions. Platform data is for reference purposes.\n\n**Intellectual Property:** The GlucoNavigator brand is protected under TÜRKPATENT registration no. 4096543.\n\n**Right to Modify:** Terms of use may be updated without prior notice.\n\n**Contact:** info@gluconavigator.io" }
+  },
+  kvkk: {
+    tr: { title: "KVKK Aydınlatma Metni", body: "6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında aydınlatma metnidir.\n\n**Veri Sorumlusu:** GlucoNavigator / PACDI Global\n\n**İşlenen Veriler:** Ad-soyad, e-posta adresi, şehir, ülke, diyabet durumu ve ölçüm sıklığı.\n\n**İşleme Amaçları:** Elite 3000 kurucu üyelik kaydı, platform geliştirme ve kullanıcı iletişimi.\n\n**Hukuki Dayanak:** Açık rıza (KVKK Madde 5/1).\n\n**Veri Aktarımı:** Verileriniz yurt içi veya yurt dışı üçüncü kişilerle paylaşılmamaktadır.\n\n**Haklarınız:** Verilerinize erişim, düzeltme, silme, işlemeye itiraz etme haklarına sahipsiniz.\n\n**Başvuru:** info@gluconavigator.io" },
+    de: { title: "KVKK Datenschutzhinweis", body: "Dies ist der Datenschutzhinweis gemäß dem türkischen Datenschutzgesetz Nr. 6698.\n\n**Verantwortlicher:** GlucoNavigator / PACDI Global\n\n**Verarbeitete Daten:** Vor- und Nachname, E-Mail, Stadt, Land, Diabetesstatus.\n\n**Zweck:** Elite 3000-Mitgliedsregistrierung, Plattformentwicklung.\n\n**Rechtsgrundlage:** Ausdrückliche Einwilligung.\n\n**Datenübermittlung:** Keine Weitergabe an Dritte.\n\n**Ihre Rechte:** Auskunft, Berichtigung, Löschung und Widerspruch.\n\n**Kontakt:** info@gluconavigator.io" },
+    en: { title: "KVKK Privacy Notice", body: "This is the privacy notice under Turkish Personal Data Protection Law No. 6698.\n\n**Data Controller:** GlucoNavigator / PACDI Global\n\n**Data Processed:** Full name, email, city, country, diabetes status.\n\n**Purpose:** Elite 3000 founder membership registration and platform development.\n\n**Legal Basis:** Explicit consent.\n\n**Data Transfer:** Not shared with third parties.\n\n**Your Rights:** Access, correction, deletion and objection rights.\n\n**Contact:** info@gluconavigator.io" }
+  },
+  dsgvo: {
+    tr: { title: "DSGVO Bilgilendirmesi", body: "Avrupa Genel Veri Koruma Tüzüğü (DSGVO/GDPR) kapsamında bilgilendirme.\n\n**Sorumlu Taraf:** GlucoNavigator / PACDI Global, Berlin\n\n**İşlenen Veriler:** Ad, e-posta, lokasyon bilgisi, sağlık durumu (isteğe bağlı).\n\n**İşleme Amacı:** Hizmet sunumu ve platform geliştirme.\n\n**Hukuki Dayanak:** Açık rıza (DSGVO Madde 6/1a).\n\n**Saklama Süresi:** Azami 2 yıl veya talep üzerine hemen silinir.\n\n**Haklarınız:** Erişim (Art. 15), Düzeltme (Art. 16), Silme (Art. 17), İtiraz (Art. 21) hakları.\n\n**Şikayet:** Yetkili veri koruma otoritesine başvurabilirsiniz.\n\n**İletişim:** info@gluconavigator.io" },
+    de: { title: "DSGVO Datenschutzinformation", body: "Informationen gemäß der Datenschutz-Grundverordnung (DSGVO).\n\n**Verantwortlicher:** GlucoNavigator / PACDI Global, Berlin\n\n**Verarbeitete Daten:** Name, E-Mail, Standortdaten, Gesundheitsstatus (optional).\n\n**Verarbeitungszweck:** Diensterbringung und Plattformentwicklung.\n\n**Rechtsgrundlage:** Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).\n\n**Speicherdauer:** Maximal 2 Jahre oder sofortige Löschung auf Anfrage.\n\n**Ihre Rechte:** Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Widerspruch (Art. 21).\n\n**Beschwerde:** Sie können sich an die zuständige Datenschutzbehörde wenden.\n\n**Kontakt:** info@gluconavigator.io" },
+    en: { title: "GDPR Privacy Information", body: "Information pursuant to the General Data Protection Regulation (GDPR).\n\n**Controller:** GlucoNavigator / PACDI Global, Berlin\n\n**Data Processed:** Name, email, location data, health status (optional).\n\n**Purpose:** Service provision and platform development.\n\n**Legal Basis:** Consent (Art. 6(1)(a) GDPR).\n\n**Retention Period:** Maximum 2 years or immediate deletion upon request.\n\n**Your Rights:** Access (Art. 15), Rectification (Art. 16), Erasure (Art. 17), Objection (Art. 21).\n\n**Complaint:** You may lodge a complaint with the competent data protection authority.\n\n**Contact:** info@gluconavigator.io" }
+  }
+};
+
+function openModal(type) {
+  var lang = document.documentElement.lang || "tr";
+  if (!legalTexts[type]) return;
+  var content = legalTexts[type][lang] || legalTexts[type]["tr"];
+  var bodyHtml = content.body
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\n\n/g, "<br><br>")
+    .replace(/\n/g, "<br>");
+  document.getElementById("modalContent").innerHTML =
+    "<h2 style='color:#2AC3B7;font-family:DM Serif Display,serif;margin-bottom:1.5rem;font-size:1.6rem;'>" +
+    content.title + "</h2>" +
+    "<div style='color:rgba(255,255,255,0.8);font-size:0.9rem;line-height:1.8;'>" +
+    bodyHtml + "</div>";
+  document.getElementById("legalModal").style.display = "block";
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  document.getElementById("legalModal").style.display = "none";
+  document.body.style.overflow = "";
+}
+
+// Close modal on background click
+document.addEventListener("click", function(e) {
+  var modal = document.getElementById("legalModal");
+  if (e.target === modal) closeModal();
+});
+
+// Close modal on ESC key
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") closeModal();
+});
 
 window.addEventListener("load",function(){
   setLang("tr");
