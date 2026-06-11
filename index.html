@@ -609,6 +609,7 @@
       <a href="#bilim" data-i18n="nav_science">Bilim</a>
       <a href="#istatistik" data-i18n="nav_stats">İstatistikler</a>
       <a href="#ekosistem" data-i18n="nav_eco">Ekosistem</a>
+      <a href="#blog" id="blog-nav">Blog</a>
       <a href="#basvuru" class="nav-cta" data-i18n="nav_apply">Başvur →</a>
     </nav>
     <div class="lang-switch">
@@ -812,6 +813,20 @@
     </div>
     <div class="source-note">
       <span data-i18n="stats_source">Kaynak: IDF Diabetes Atlas 11. Baskı, WHO, RKI 2024</span>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / MAKALE BÖLÜMÜ -->
+<section style="background:#F5F7FA !important;padding:100px 2rem;" id="blog">
+  <div class="container">
+    <p class="section-label" id="blog-label">Bilgi &amp; Rehber</p>
+    <h2 class="section-title" id="blog-title">Diyabet Hakkında<br>Bilmeniz Gerekenler.</h2>
+    <p class="section-body" id="blog-sub" style="margin-bottom:2.5rem;">Uzman içerikler, bilimsel kaynaklar ve pratik rehberler — tümü ücretsiz.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-bottom:2.5rem;" id="blog-grid"></div>
+    <div style="background:#FFFFFF;border-radius:16px;padding:2rem;border:1px solid #D8E4EE;">
+      <p style="font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#2AC3B7;margin-bottom:1.2rem;" id="blog-all-title">Tüm Makaleler</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.6rem;" id="blog-all-list"></div>
     </div>
   </div>
 </section>
@@ -1079,7 +1094,12 @@ var i18n = {
     eco_label: "PACDI Ekosistemi", eco_title: "Sağlık Navigasyonunda<br>Tek Durak.",
     eco_card1: "Bilişsel sağlık ve GlucoNavigatör el ele — bütünsel yaşam navigasyonu.",
     eco_card2: "60+ yaş için kan şekeri takibi ve yaşlı bakım navigasyonu.",
-    eco_card3: "Almanya'da diyabet yardımları ve Pflegegrad başvuru rehberi."
+    eco_card3: "Almanya'da diyabet yardımları ve Pflegegrad başvuru rehberi.",
+    nav_blog: "Blog",
+    blog_label: "Bilgi & Rehber",
+    blog_title: "Diyabet Hakkında<br>Bilmeniz Gerekenler.",
+    blog_all: "Tüm Makaleler",
+    blog_read: "Oku →"
   },
   de: {
     nav_tech: "Technologie", nav_privacy: "Datenschutz", nav_elite: "Elite 3000", nav_science: "Wissenschaft", nav_apply: "Bewerben",
@@ -1124,7 +1144,12 @@ var i18n = {
     eco_label: "PACDI Ökosystem", eco_title: "Eine Anlaufstelle für<br>Gesundheitsnavigation.",
     eco_card1: "Kognitive Gesundheit und GlucoNavigatör Hand in Hand.",
     eco_card2: "Blutzuckerüberwachung und Seniorenbegleitung für 60+.",
-    eco_card3: "Diabetes-Unterstützung und Pflegegrad-Antragshilfe."
+    eco_card3: "Diabetes-Unterstützung und Pflegegrad-Antragshilfe.",
+    nav_blog: "Blog",
+    blog_label: "Wissen & Ratgeber",
+    blog_title: "Was Sie über Diabetes<br>wissen sollten.",
+    blog_all: "Alle Artikel",
+    blog_read: "Lesen →"
   },
   en: {
     nav_tech: "Technology", nav_privacy: "Privacy", nav_elite: "Elite 3000", nav_science: "Science", nav_apply: "Apply",
@@ -1169,7 +1194,12 @@ var i18n = {
     eco_label: "PACDI Ecosystem", eco_title: "One Stop for<br>Health Navigation.",
     eco_card1: "Cognitive health and GlucoNavigatör hand in hand.",
     eco_card2: "Blood sugar tracking and senior care navigation for 60+.",
-    eco_card3: "Diabetes benefits and Pflegegrad application guide."
+    eco_card3: "Diabetes benefits and Pflegegrad application guide.",
+    nav_blog: "Blog",
+    blog_label: "Knowledge & Guides",
+    blog_title: "Everything You Need<br>to Know About Diabetes.",
+    blog_all: "All Articles",
+    blog_read: "Read →"
   }
 };
 
@@ -1191,6 +1221,7 @@ function setLang(l){
   var ab=document.getElementById("btn-"+l);
   if(ab)ab.classList.add("active");
   document.documentElement.lang=l;
+  renderBlog(l);
 }
 
 function checkCGM(sel){
@@ -1294,8 +1325,129 @@ document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") closeModal();
 });
 
+var blogArticles = {
+  tr: {
+    featured: [
+      { title: "Uyku Kan Şekerini Nasıl Etkiler?", desc: "Kötü uykunun glikoz değerlerinizi nasıl etkilediğini öğrenin.", url: "blog/uyku-kan-sekeri.html" },
+      { title: "Parmak Delmeden Şeker Ölçümü: CGM", desc: "Sürekli glikoz izleme sistemi, fiyatlar ve alternatifler.", url: "blog/cgm-parmak-delmeden-seker-olcumu.html" },
+      { title: "Prediyabet: Belirtiler ve Erken Teşhis", desc: "540 milyon kişi prediyabetik — çoğu farkında bile değil.", url: "blog/pradiabetes-anzeichen-fruherkennung.html" },
+      { title: "Diyabet Teknolojileri 2026", desc: "Yapay zeka, CGM ve yeni nesil diyabet yönetimi.", url: "blog/diyabet-teknolojileri-2026.html" },
+      { title: "Stres ve Diyabet Yönetimi", desc: "Kortizolün kan şekerine etkisi ve başa çıkma yolları.", url: "blog/diyabet-stress-yonetimi.html" },
+      { title: "Almanya'da İş Hayatı ve Diyabet", desc: "Haklarınız, yükümlülükleriniz ve pratik ipuçları.", url: "blog/diyabet-is-hayati-almanya.html" }
+    ],
+    all: [
+      ["Uyku ve Kan Şekeri","blog/uyku-kan-sekeri.html"],
+      ["CGM: Parmak Delmeden Ölçüm","blog/cgm-parmak-delmeden-seker-olcumu.html"],
+      ["Prediyabet Belirtileri","blog/pradiabetes-anzeichen-fruherkennung.html"],
+      ["Diyabet Teknolojileri 2026","blog/diyabet-teknolojileri-2026.html"],
+      ["Stres Yönetimi","blog/diyabet-stress-yonetimi.html"],
+      ["Spor ve Beslenme","blog/diyabet-spor-beslenme.html"],
+      ["Ayak Bakımı","blog/diyabet-ayak-bakimi.html"],
+      ["Gebelik ve Gestasyonel Diyabet","blog/diyabet-gebelik-gestasyonel.html"],
+      ["İleri Yaşta Diyabet","blog/diyabet-ileri-yas.html"],
+      ["İş Hayatında Diyabet","blog/diyabet-is-hayati-almanya.html"],
+      ["Ramazan ve Oruç","blog/diyabet-ramazan-orucu.html"],
+      ["Seyahat Rehberi","blog/diyabet-seyahat.html"],
+      ["Sigorta ve Masraflar","blog/diyabet-sigorta-masraflar.html"],
+      ["Düşük Karbonhidratlı Beslenme","blog/diyabet-dusuk-karbonhidratli-beslenme.html"],
+      ["Cinsel Sağlık","blog/diyabet-cinsel-saglik.html"],
+      ["Çocuklar ve Okul","blog/diyabet-cocuklar-okul.html"],
+      ["Alternatif Tedaviler","blog/diyabet-alternatif-tedaviler.html"],
+      ["CGM Rehberi","blog/gluco-cgm-parmak-delmeden.html"]
+    ]
+  },
+  de: {
+    featured: [
+      { title: "Wie Schlaf den Blutzucker beeinflusst", desc: "Was schlechter Schlaf mit Ihren Glukosewerten macht.", url: "blog/uyku-kan-sekeri.html" },
+      { title: "CGM: Glukose messen ohne Stechen", desc: "CGM-Systeme, Kosten und Software-Alternativen.", url: "blog/cgm-parmak-delmeden-seker-olcumu.html" },
+      { title: "Prädiabetes: Anzeichen & Früherkennung", desc: "540 Millionen Prädiabetiker — die meisten wissen es nicht.", url: "blog/pradiabetes-anzeichen-fruherkennung.html" },
+      { title: "Diabetes-Technologien 2026", desc: "KI, CGM und neue Generation des Diabetesmanagements.", url: "blog/diyabet-teknolojileri-2026.html" },
+      { title: "Stress und Diabetes", desc: "Wie Cortisol den Blutzucker erhöht.", url: "blog/diyabet-stress-yonetimi.html" },
+      { title: "Diabetes im Job in Deutschland", desc: "Rechte, Pflichten und praktische Tipps.", url: "blog/diyabet-is-hayati-almanya.html" }
+    ],
+    all: [
+      ["Schlaf & Blutzucker","blog/uyku-kan-sekeri.html"],
+      ["CGM ohne Stechen","blog/cgm-parmak-delmeden-seker-olcumu.html"],
+      ["Prädiabetes Anzeichen","blog/pradiabetes-anzeichen-fruherkennung.html"],
+      ["Diabetes-Technologien 2026","blog/diyabet-teknolojileri-2026.html"],
+      ["Stressmanagement","blog/diyabet-stress-yonetimi.html"],
+      ["Sport & Ernährung","blog/diyabet-spor-beslenme.html"],
+      ["Fußpflege","blog/diyabet-ayak-bakimi.html"],
+      ["Schwangerschaft & Gestationsdiabetes","blog/diyabet-gebelik-gestasyonel.html"],
+      ["Diabetes im Alter","blog/diyabet-ileri-yas.html"],
+      ["Diabetes im Job","blog/diyabet-is-hayati-almanya.html"],
+      ["Ramadan & Fasten","blog/diyabet-ramazan-orucu.html"],
+      ["Reiseratgeber","blog/diyabet-seyahat.html"],
+      ["Versicherung & Kosten","blog/diyabet-sigorta-masraflar.html"],
+      ["Low-Carb Ernährung","blog/diyabet-dusuk-karbonhidratli-beslenme.html"],
+      ["Sexuelle Gesundheit","blog/diyabet-cinsel-saglik.html"],
+      ["Kinder & Schule","blog/diyabet-cocuklar-okul.html"],
+      ["Alternative Therapien","blog/diyabet-alternatif-tedaviler.html"],
+      ["CGM Ratgeber","blog/gluco-cgm-parmak-delmeden.html"]
+    ]
+  },
+  en: {
+    featured: [
+      { title: "How Sleep Affects Blood Sugar", desc: "What bad sleep does to your glucose levels.", url: "blog/uyku-kan-sekeri.html" },
+      { title: "CGM: Glucose Monitoring Without Finger Pricks", desc: "CGM systems, costs and software alternatives.", url: "blog/cgm-parmak-delmeden-seker-olcumu.html" },
+      { title: "Prediabetes: Signs & Early Detection", desc: "540 million people have prediabetes — most don't know.", url: "blog/pradiabetes-anzeichen-fruherkennung.html" },
+      { title: "Diabetes Technologies 2026", desc: "AI, CGM and new generation of diabetes management.", url: "blog/diyabet-teknolojileri-2026.html" },
+      { title: "Stress & Diabetes Management", desc: "How cortisol raises blood sugar.", url: "blog/diyabet-stress-yonetimi.html" },
+      { title: "Diabetes at Work in Germany", desc: "Rights, obligations and practical tips.", url: "blog/diyabet-is-hayati-almanya.html" }
+    ],
+    all: [
+      ["Sleep & Blood Sugar","blog/uyku-kan-sekeri.html"],
+      ["CGM Without Finger Prick","blog/cgm-parmak-delmeden-seker-olcumu.html"],
+      ["Prediabetes Signs","blog/pradiabetes-anzeichen-fruherkennung.html"],
+      ["Diabetes Technologies 2026","blog/diyabet-teknolojileri-2026.html"],
+      ["Stress Management","blog/diyabet-stress-yonetimi.html"],
+      ["Sports & Nutrition","blog/diyabet-spor-beslenme.html"],
+      ["Foot Care","blog/diyabet-ayak-bakimi.html"],
+      ["Pregnancy & Gestational Diabetes","blog/diyabet-gebelik-gestasyonel.html"],
+      ["Diabetes in Old Age","blog/diyabet-ileri-yas.html"],
+      ["Diabetes at Work","blog/diyabet-is-hayati-almanya.html"],
+      ["Ramadan & Fasting","blog/diyabet-ramazan-orucu.html"],
+      ["Travel Guide","blog/diyabet-seyahat.html"],
+      ["Insurance & Costs","blog/diyabet-sigorta-masraflar.html"],
+      ["Low-Carb Diet","blog/diyabet-dusuk-karbonhidratli-beslenme.html"],
+      ["Sexual Health","blog/diyabet-cinsel-saglik.html"],
+      ["Children & School","blog/diyabet-cocuklar-okul.html"],
+      ["Alternative Therapies","blog/diyabet-alternatif-tedaviler.html"],
+      ["CGM Guide","blog/gluco-cgm-parmak-delmeden.html"]
+    ]
+  }
+};
+
+function renderBlog(lang) {
+  var d = blogArticles[lang] || blogArticles["tr"];
+  var t = i18n[lang] || i18n["tr"];
+  var el;
+  el = document.getElementById("blog-label"); if(el) el.textContent = t.blog_label||"Blog";
+  el = document.getElementById("blog-title"); if(el) el.innerHTML = t.blog_title||"";
+  el = document.getElementById("blog-sub"); if(el) el.textContent = t.blog_sub||"";
+  el = document.getElementById("blog-all-title"); if(el) el.textContent = t.blog_all||"";
+  el = document.getElementById("blog-nav"); if(el) el.textContent = t.nav_blog||"Blog";
+  var grid = document.getElementById("blog-grid");
+  if(grid) {
+    grid.innerHTML = d.featured.map(function(a){
+      return '<div style="background:#FFFFFF;border:1px solid #D8E4EE;border-radius:14px;padding:1.5rem;cursor:pointer;transition:box-shadow .2s,border-color .2s;" onclick="location.href=\''+a.url+'\'" onmouseover="this.style.borderColor=\'#2AC3B7\';this.style.boxShadow=\'0 8px 24px rgba(10,26,58,.08)\'" onmouseout="this.style.borderColor=\'#D8E4EE\';this.style.boxShadow=\'none\'">'
+        +'<h4 style="font-size:1rem;font-weight:600;color:#0A1A3A;margin-bottom:.5rem;line-height:1.4;">'+a.title+'</h4>'
+        +'<p style="font-size:.85rem;color:#6B7A8D;line-height:1.6;margin-bottom:1rem;">'+a.desc+'</p>'
+        +'<a href="'+a.url+'" style="font-size:.82rem;font-family:\'Space Mono\',monospace;color:#2AC3B7;text-decoration:none;" onclick="event.stopPropagation()">'+(t.blog_read||"→")+'</a>'
+        +'</div>';
+    }).join("");
+  }
+  var list = document.getElementById("blog-all-list");
+  if(list) {
+    list.innerHTML = d.all.map(function(a){
+      return '<a href="'+a[1]+'" style="display:inline-block;background:#E8FAF9;color:#1BB5A9;font-size:.75rem;font-family:\'Space Mono\',monospace;padding:.3rem .9rem;border-radius:100px;text-decoration:none;transition:all .2s;" onmouseover="this.style.background=\'#2AC3B7\';this.style.color=\'#0A1A3A\'" onmouseout="this.style.background=\'#E8FAF9\';this.style.color=\'#1BB5A9\'">'+a[0]+'</a>';
+    }).join("");
+  }
+}
+
 window.addEventListener("load",function(){
   setLang("tr");
+  renderBlog("tr");
   var f=document.getElementById("fill");
   if(f)setTimeout(function(){f.style.width="18%";},500);
 });
